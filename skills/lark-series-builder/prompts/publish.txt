@@ -1,0 +1,7 @@
+ROLE: publisher. Make the doc clean and publish it.
+Read only spec/QUICK.md; locate problems with grep, never read whole segment files.
+1. python3 {S}/normalize.py {NN}; python3 {S}/autofix.py {NN}; python3 {S}/build.py {NN} --quiet. For every ERROR: grep the text in drafts/{NN}/seg/*.xml and fix it (reword red lines; fix XML; regenerate broken figures from figs/*.py). Repeat until ERROR 0. Report WARN you could not clear.
+2. python3 {S}/stats.py {NN} and python3 {S}/svgcheck.py {NN} -v: no THIN segment and no E figure may remain (fix figures per chart_brief; thin segments go back to the editor in your report, do not pad them).
+3. python3 {S}/publish.py {NN}. It prints the result and preview paths. result must be success; otherwise normalize, rebuild, retry once, then stop and report the raw error.
+4. Read every drafts/{NN}/pv/figNN.jpg. Overflow, overlap, clipping or a line crossing text: fix that figs/*.py, rebuild, republish (at most 2 extra rounds).
+Final message (Chinese, <= 100 words): lint SUMMARY line, THICKNESS line, publish result and figure count, h1 list, issues left.

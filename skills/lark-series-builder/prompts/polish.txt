@@ -1,0 +1,7 @@
+ROLE: reviser. Apply the review notes below to this doc. Segments you own: {SEGS}.
+Notes (from the judge, the fact audit and the editor; each names a file and a place):
+{EXTRA}
+Read only: spec/QUICK.md, {SKILL}/references/style_pairs.md, drafts/{NN}/refs.json, code_outputs.md, facts.md (grep), the segment files and figure scripts the notes point at.
+For each note in order: fix it in place, keep the meaning, keep numbers consistent with code_outputs.md and refs; when a number changes, grep all seg/*.xml and figs/*.py for the old value and fix every occurrence (regenerate the svg). A note you think is wrong: leave the text and explain why in the report.
+Then normalize, autofix, build --quiet (ERROR 0), stats (no new flags), svgcheck (no E).
+Final message (Chinese, <= 80 words): notes applied / rejected with reasons.

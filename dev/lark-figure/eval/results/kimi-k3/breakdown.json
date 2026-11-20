@@ -1,0 +1,49 @@
+{
+ "type": "tree",
+ "title": "10 月云账单 420 万，GPU 一项占 45%",
+ "subtitle": "按费用项拆解总账单；红色是下季度降本重点",
+ "source": "来源：FinOps 月报 2026-10",
+ "callout": {"label": "结论", "text": "GPU 实例 190 万，是下季度降本重点", "tone": "risk"},
+ "root": {
+  "label": "总账单 420 万",
+  "sub": "2026 年 10 月",
+  "children": [
+   {
+    "label": "计算 250 万",
+    "children": [
+     {
+      "label": "GPU 实例",
+      "sub": "190 万 / 占 45%",
+      "tone": "risk",
+      "emph": true
+     },
+     {
+      "label": "CPU 实例",
+      "sub": "60 万",
+      "tone": "base"
+     }
+    ]
+   },
+   {
+    "label": "存储 110 万",
+    "children": [
+     {
+      "label": "对象存储",
+      "sub": "70 万",
+      "tone": "base"
+     },
+     {
+      "label": "块存储",
+      "sub": "40 万",
+      "tone": "base"
+     }
+    ]
+   },
+   {
+    "label": "网络 60 万",
+    "sub": "几乎全是跨可用区流量",
+    "tone": "base"
+   }
+  ]
+ }
+}

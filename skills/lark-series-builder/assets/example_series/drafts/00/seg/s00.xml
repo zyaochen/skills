@@ -1,0 +1,4 @@
+<title>EX-00｜索引｜示例系列：路线与主线</title>
+<callout emoji="🎯" background-color="rgb(255,245,235)" border-color="rgb(255,186,107)"><p><b>这篇文档解决什么问题</b>：示例系列的总览，说明主线和每篇负责的等待项。</p></callout>
+<h1>路线</h1>
+<p>第一篇 {{C:01}} 讲主机拷贝{{r:cuda_pinned}}，第二篇 {{C:02}} 待写。</p>

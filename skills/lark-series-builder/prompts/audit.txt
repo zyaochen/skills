@@ -1,0 +1,8 @@
+ROLE: read-only fact audit. DO NOT edit any file.
+Get the prose: python3 -c "import re,glob;[print(p[-7:],re.sub(r'<[^>]+>',' ',open(p).read())) for p in sorted(glob.glob('drafts/{NN}/seg/*.xml'))]" (read it in parts if long), and skim the text labels in drafts/{NN}/figs/*.py.
+Find claims that are very likely WRONG (not merely unsourced): specs with the wrong basis (dense vs sparse, one-way vs bidirectional, per-link vs per-device, GB vs GiB, ms vs µs), arithmetic that does not add up, wrong attributions (paper, company, author), wrong API/flag/tool behaviour, contradictions between chapters, numbers that disagree with drafts/{NN}/code_outputs.md.
+Reference values:
+{REFVALUES}
+Only report items you are confident about. Output (<= 15 lines, nothing else), one line per item:
+sNN.xml | "exact quote <= 50 chars that can be grep'd" | why wrong | correct statement
+If nothing is wrong, output: CLEAN

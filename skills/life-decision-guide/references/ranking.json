@@ -1,0 +1,26 @@
+{
+  "commit": "24e3d67e4befe0969857616f954410736b417e2f",
+  "source_file": "index.html",
+  "source_sha256": "207df29335c786ae374c49d5fe49dfaee339bbc69cfa03542a173b9423156849",
+  "source_url": "https://github.com/eternity4719/HowToLiveBetter/blob/24e3d67e4befe0969857616f954410736b417e2f/index.html",
+  "weights_excerpt": "const COST_W = { money:{'0':0,'少':1,'多':2}, time:{'少':0,'中':1,'多':2}, will:{'否':0,'些':1,'是':2} };",
+  "ratio_excerpt": "e.ratio = e.level === '大' ? (e.cs === 0 ? '极高' : (e.cs <= 2 ? '高' : '一般'))\n            : e.level === '中' ? (e.cs === 0 ? '高' : '一般') : '一般';",
+  "weights": {
+    "钱": {
+      "0": 0,
+      "少": 1,
+      "多": 2
+    },
+    "时间": {
+      "少": 0,
+      "中": 1,
+      "多": 2
+    },
+    "毅力": {
+      "否": 0,
+      "些": 1,
+      "是": 2
+    }
+  },
+  "meaning": "只复现作者版本；不同收益口径不比较。"
+}

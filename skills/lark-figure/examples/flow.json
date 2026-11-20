@@ -1,0 +1,46 @@
+{
+ "type": "flow",
+ "title": "一次推理请求要过四道关，排队占了 60% 的时间",
+ "subtitle": "从网关到返回首 token，大号数字是各段 p50 耗时",
+ "source": "来源：线上 trace 抽样 1 万条",
+ "numbered": true,
+ "steps": [
+  {
+   "title": "网关鉴权",
+   "lines": [
+    "限流 + token 校验"
+   ],
+   "metric": "3 ms",
+   "tone": "base"
+  },
+  {
+   "title": "调度排队",
+   "lines": [
+    "等空闲 GPU 槽位"
+   ],
+   "metric": "120 ms",
+   "tone": "risk",
+   "emph": true
+  },
+  {
+   "title": "Prefill",
+   "lines": [
+    "整段 prompt 一次前向"
+   ],
+   "metric": "45 ms"
+  },
+  {
+   "title": "首 token 返回",
+   "lines": [
+    "流式输出开始"
+   ],
+   "metric": "30 ms",
+   "tone": "good"
+  }
+ ],
+ "labels": [
+  "",
+  "分到槽位",
+  ""
+ ]
+}

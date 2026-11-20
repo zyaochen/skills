@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.1",
+  "subject": "示例主题",
+  "version": "v1.0",
+  "document": {
+    "mode": "create",
+    "id": "fixture-doc-id",
+    "url": "https://example.feishu.cn/docx/fixturedoc",
+    "revision": 3
+  },
+  "character": {
+    "mode": "custom",
+    "reference_asset": "refs/character.png",
+    "appearance_anchor": "浅柠檬黄身体、深棕描边、分开的豆豆眼",
+    "identity_traits": ["不规则块茎轮廓", "浅褐斑点与芽眼"],
+    "scale_rule": "约一扇门洞高，人群中只比旁人略高",
+    "selection_reason": "用户提供参考图并指定"
+  },
+  "sources": [
+    {"id": "s1", "title": "个人博客", "url": "https://example.com/blog", "status": "read", "visibility": "public", "content_hash": "h-s1"}
+  ],
+  "coverage": {"discovered": 1, "read": 1, "partial": 0, "unavailable": 0, "duplicate": 0, "excluded": 0, "inventory_complete": true},
+  "claims": [
+    {"id": "c1", "text": "2012 年开始写博客", "kind": "fact", "source_ids": ["s1"]},
+    {"id": "c2", "text": "缓慢构建，公开发布", "kind": "quote", "source_ids": ["s1"], "exact_quote": "缓慢构建，公开发布", "quote_verified": true}
+  ],
+  "sections": [
+    {"key": "cover", "title": "封面", "claim_ids": [], "image_ids": ["img-cover"], "editable_details": [], "source_ids": [], "content_hash": "h-cover", "remote_block_ids": []},
+    {"key": "map", "title": "全谷地图", "claim_ids": ["c1", "c2"], "image_ids": ["img-map"], "editable_details": ["第一关 2012"], "source_ids": ["s1"], "content_hash": "h-map", "remote_block_ids": ["blk-map"]}
+  ],
+  "images": [
+    {"id": "img-cover", "role": "cover", "section_key": "cover", "character_mode": "custom", "status": "embedded", "local_path": "out/cover.jpg", "file_token": "tok-cover", "remote_block_id": "blk-cover", "required_labels": [], "editable_details": [], "label_mode": "none", "labels_checked": false, "visual_checked": true, "scale_checked": true, "pixel_width": 2560, "pixel_height": 1440, "bytes": 540000},
+    {"id": "img-map", "role": "map", "section_key": "map", "character_mode": "custom", "status": "embedded", "local_path": "out/map.jpg", "file_token": "tok-map", "remote_block_id": "blk-map-img", "required_labels": ["第一关"], "editable_details": ["第一关 2012"], "label_mode": "numbered_legend", "labels_checked": true, "visual_checked": true, "scale_checked": true, "pixel_width": 2560, "pixel_height": 1440, "bytes": 610000}
+  ],
+  "operations": [
+    {"id": "op1", "section_key": "map", "action": "insert_image", "status": "verified", "input_hash": "h-op1"}
+  ],
+  "mirrors": [
+    {"id": "fixture-mirror-id", "url": "https://example.feishu.cn/wiki/fixturewiki", "parity": {"text": true, "images": true, "captions": true, "colors": true}}
+  ],
+  "validation": {
+    "remote_readback": true,
+    "character_consistency": true,
+    "labels_verified": true,
+    "details_preserved": true,
+    "citations_checked": true,
+    "changelog_present": true,
+    "scale_matched": true,
+    "proofread": true
+  },
+  "gaps": []
+}

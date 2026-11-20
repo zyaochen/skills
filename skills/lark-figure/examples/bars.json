@@ -1,0 +1,29 @@
+{
+ "type": "bars",
+ "title": "换成 FlashAttention-3 后，长序列 Attention 提速 2.6 倍",
+ "subtitle": "单卡 H100，序列长度 16K，前向耗时；蓝色是本文方案",
+ "source": "来源：FlashAttention-3 论文 表 3",
+ "unit": " ms",
+ "rows": [
+  {
+   "label": "标准 Attention",
+   "value": 41.2,
+   "tone": "base"
+  },
+  {
+   "label": "FlashAttention-2",
+   "value": 22.5,
+   "tone": "base"
+  },
+  {
+   "label": "FlashAttention-3",
+   "value": 15.8,
+   "tone": "main",
+   "note": "本文"
+  }
+ ],
+ "ref": {
+  "value": 20,
+  "label": "目标 20 ms"
+ }
+}

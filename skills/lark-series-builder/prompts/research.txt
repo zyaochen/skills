@@ -1,0 +1,8 @@
+ROLE: research for this doc. Output drafts/{NN}/facts.md and drafts/{NN}/refs.json.
+Read: spec/MAINLINE.md, spec/cards/{NN}.md (if present), the registry entries of this doc and its prev/next (what NOT to cover), {BACKUP_HINT}and any source material the card lists.
+1. facts.md: one line per fact: `- [VERIFIED] fact | URL | how checked (table number, section, quoted phrase)`. Mark [UNVERIFIED] what you cannot confirm; those never reach the prose. Cover every number the outline will need: specs with their basis (dense/sparse, one-way/bidirectional, per-link/per-device), versions, paper results, defaults of tools and flags.
+2. refs.json: {REF_LO}-{REF_HI} entries, short English keys, value {"cite": "Author or org. Title. Venue (Year)", "url": "specific page"}. Open or search every entry; arXiv: check title and year; vendor docs: the specific page, never a home page or tag page. Internal domains are not allowed.
+3. Cross-check against these reference values and flag conflicts in facts.md:
+{REFVALUES}
+Completion: refs.json valid JSON with >= {REF_LO} verified entries; every number in facts.md has a URL and a check method.
+Final message (Chinese, <= 60 words): counts of VERIFIED/UNVERIFIED, refs, the 3 facts most likely to be contested.

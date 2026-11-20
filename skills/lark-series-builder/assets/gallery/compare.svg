@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" width="1200" height="470">
+<rect x="0" y="0" width="1200" height="470" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">H2D 拷贝换成锁页内存加异步流，搬运从关键路径上移走</text>
+<text x="40" y="92" font-size="14" fill="#646A73">左边是改动前、右边是改动后；下方标签是同一负载复测的数字</text>
+<rect x="40" y="150" width="512" height="128" rx="12" fill="#FFF1E0" stroke="#FFBA6B" stroke-width="1"/>
+<text x="56" y="181" font-size="18" fill="#1F2329" font-weight="bold">改前：可分页内存，同步拷贝</text>
+<text x="56" y="211" font-size="14" fill="#646A73">驱动先把数据复制到临时锁页缓冲，再走 DMA</text>
+<text x="56" y="234" font-size="14" fill="#646A73">cudaMemcpy 返回前 GPU 什么都不做</text>
+<text x="56" y="257" font-size="14" fill="#646A73">每个 batch 都在等主机</text>
+<rect x="648" y="150" width="512" height="128" rx="12" fill="#E4FAE1" stroke="#8EE085" stroke-width="1"/>
+<text x="664" y="181" font-size="18" fill="#1F2329" font-weight="bold">改后：锁页内存，异步流</text>
+<text x="664" y="211" font-size="14" fill="#646A73">DataLoader 设 pin_memory，拷贝直接走 DMA</text>
+<text x="664" y="234" font-size="14" fill="#646A73">non_blocking 拷贝和上一步计算重叠</text>
+<text x="664" y="257" font-size="14" fill="#646A73">下一 batch 在计算时已经到位</text>
+<polyline points="564,214 636,214" fill="none" stroke="#8F959E" stroke-width="2"/>
+<polygon points="626,208 636,214 626,220" fill="#8F959E"/>
+<text x="600" y="206" font-size="12" fill="#646A73" text-anchor="middle">改两行</text>
+<rect x="40" y="306" width="150" height="26" rx="13.0" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="115" y="322" font-size="14" fill="#245BDB" text-anchor="middle">H2D 21 → 47 GB/s</text>
+<rect x="206" y="306" width="199" height="26" rx="13.0" fill="#E4FAE1" stroke="#8EE085" stroke-width="1"/>
+<text x="306" y="322" font-size="14" fill="#2EA121" text-anchor="middle">暴露的主机等待 38 → 4 ms</text>
+<rect x="421" y="306" width="158" height="26" rx="13.0" fill="#E4FAE1" stroke="#8EE085" stroke-width="1"/>
+<text x="500" y="322" font-size="14" fill="#2EA121" text-anchor="middle">step 210 → 176 ms</text>
+<rect x="40" y="362" width="1120" height="49" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="56" y="390" font-size="15" fill="#1F2329">拷贝本身变快约一倍，更重要的是它被藏到了计算后面；时间账里 W_host 几乎归零。</text>
+<text x="40" y="446" font-size="12" fill="#646A73">来源：本 skill 示例数据；PCIe Gen5 x16 单向约 63 GB/s</text>
+</svg>

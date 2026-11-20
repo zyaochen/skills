@@ -1,0 +1,23 @@
+{
+ "_readme": "Template for ROOT/spec/series.json. Only keys that differ from assets/series.default.json are needed. Field reference: references/config.md. Replace every REPLACE_ME.",
+ "name": "REPLACE_ME 系列名",
+ "prefix": "DOC",
+ "verified_on": "2026 年 1 月 1 日",
+ "refs_asof": "2026 年 1 月初",
+ "folder": {"token": "REPLACE_ME", "url": "https://REPLACE_ME"},
+ "code_repo": {"url": "", "local": "", "branch": ""},
+ "hub": {"num": "00", "token": "REPLACE_ME", "title": "DOC-00｜索引｜REPLACE_ME", "focus": "全系列路线与主线", "scope": "索引"},
+ "docs": [
+  {"num": "01", "token": "REPLACE_ME", "title": "DOC-01｜层名｜主题：要点", "level": "L1", "status": "new",
+   "focus": "本篇在主线上负责的那一项", "scope": "本篇深挖的范围", "prev": "00", "next": "02", "code_dir": ""}
+ ],
+ "template": {
+  "position": "",
+  "first_chapter_contains": "",
+  "last_chapter_contains": "清单",
+  "required_terms": []
+ },
+ "audit": {
+  "reference_values": []
+ }
+}

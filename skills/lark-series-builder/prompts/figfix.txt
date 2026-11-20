@@ -1,0 +1,9 @@
+ROLE: figure layout fixes. {EXTRA}
+svgkit: `import sys; sys.path.insert(0, '{S}'); from svgkit import Board` (components card/note/flow/stack/bars/lanes/table/tag/cols return their bottom y; omit h to auto-fit the canvas). Gallery exemplars with rendered PNGs: {SKILL}/assets/gallery/.
+Read only: {SKILL}/references/chart_brief.md (sections 2, 4, 5) and the figure scripts you fix. Run python3 {S}/svgcheck.py {NN} -v.
+For each flagged figure edit drafts/{NN}/figs/NAME.py and rerun it (from drafts/{NN}/figs). Prefer rebuilding the figure with svgkit components (they size boxes and canvas to the text) over nudging coordinates. Rules: content starts at y >= 120 and ends >= 52 px above the 来源 line; fonts never below 12 (shorten or wrap text, or grow the canvas up to 960); <= 3 colour families from the palette; nothing outside the canvas; keep every number and meaning.
+After each figure: svgcheck again, then python3 {S}/preview_local.py drafts/{NN}/figs/NAME.svg and Read the PNG. A W item may stay only if the PNG shows it is a false positive; name it in your report.
+Never truncate words to make text fit; never change a number or a conclusion; after the layout is fixed, re-read every sentence in the figure against its numbers.
+Completion: every figure you touched prints OK in svgcheck. "empty band", "left N% of the canvas" and "side margin" are never false positives. Any other remaining item must be quoted verbatim in your report with the reason the PNG shows it is fine.
+Do not edit seg files, do not publish.
+Final message (Chinese, <= 40 words): figures fixed, remaining items and why.

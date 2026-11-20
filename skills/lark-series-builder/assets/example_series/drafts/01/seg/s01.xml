@@ -1,0 +1,8 @@
+<h1>第 1 章 · 拷贝在等什么</h1>
+<p>每个 batch 前的空白就是 GPU 在等主机拷贝。可分页内存上的 cudaMemcpy 会先由驱动复制到锁页缓冲，再交给 DMA 引擎，两段串行{{r:cuda_pinned}}。</p>
+<h2>1.1 先定天花板，再测实际</h2>
+<p>定天花板：PCIe Gen5 x16 单向约 63 GB/s，这是拷贝速度的上限。测实际：用 nsys 看 H2D 段的耗时，除以字节数得到实测带宽。两者差得越多，越值得改。</p>
+{{F:wait}}
+<table><colgroup><col width="240"/><col width="280"/><col width="280"/></colgroup><thead><tr><th background-color="rgb(240,244,255)" vertical-align="top"><p>内存类型</p></th><th background-color="rgb(240,244,255)" vertical-align="top"><p>拷贝路径</p></th><th background-color="rgb(240,244,255)" vertical-align="top"><p>能否异步</p></th></tr></thead><tbody><tr><td vertical-align="top"><p>可分页</p></td><td vertical-align="top"><p>先复制到锁页缓冲，再 DMA</p></td><td vertical-align="top"><p>否</p></td></tr><tr><td vertical-align="top"><p>锁页</p></td><td vertical-align="top"><p>DMA 直接读</p></td><td vertical-align="top"><p>是</p></td></tr></tbody></table>
+<callout emoji="💡" background-color="rgb(255,245,235)" border-color="rgb(255,186,107)"><p><b>常见误区</b>：只加 non_blocking 不开 pin_memory。源内存不是锁页的，拷贝仍然同步执行，时间线上看不到任何重叠{{r:pytorch_pin}}。</p></callout>
+<callout emoji="🔑" background-color="rgb(255,245,235)" border-color="rgb(255,186,107)"><p><b>本章要点</b>：空白来自串行的两段复制；本章定位了 GPU 等主机拷贝这一项等待。</p></callout>

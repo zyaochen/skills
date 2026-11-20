@@ -1,0 +1,49 @@
+{
+ "type": "matrix",
+ "title": "先做左上角：缓存和批处理收益高、改动小",
+ "subtitle": "横轴是改造成本，纵轴是预期降本幅度",
+ "source": "来源：推理成本复盘会 2026-10",
+ "x": {
+  "label": "改造成本",
+  "low": "低",
+  "high": "高"
+ },
+ "y": {
+  "label": "降本幅度",
+  "low": "小",
+  "high": "大"
+ },
+ "quadrants": [
+  {
+   "title": "立刻做",
+   "items": [
+    "Prefix 缓存",
+    "动态批处理"
+   ],
+   "tone": "good",
+   "highlight": true
+  },
+  {
+   "title": "值得排期",
+   "items": [
+    "投机解码",
+    "量化到 FP8"
+   ],
+   "tone": "base"
+  },
+  {
+   "title": "顺手做",
+   "items": [
+    "日志降采样"
+   ],
+   "tone": "base"
+  },
+  {
+   "title": "暂缓",
+   "items": [
+    "自研推理引擎"
+   ],
+   "tone": "base"
+  }
+ ]
+}

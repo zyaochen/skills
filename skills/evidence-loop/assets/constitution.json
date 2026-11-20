@@ -1,0 +1,19 @@
+{
+  "frozen": [
+    "tests/golden",
+    "benchmarks/harness"
+  ],
+  "generated": [
+    "build",
+    ".pytest_cache"
+  ],
+  "guard_cmd": "python3 -m compileall -q src",
+  "budget": {
+    "default_minutes": 60,
+    "max_minutes": 240,
+    "reserve_minutes": 10,
+    "max_attempts": 40,
+    "token_budget": 2000000
+  },
+  "fast_cmd": "python3 -m pytest -q -x tests/smoke"
+}

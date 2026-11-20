@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lark Figure"
+  short_description: "飞书画板配图：只写内容 spec，排版配色由脚本按固定审美生成，过 lint 后写入画板"
+  default_prompt: "用 lark-figure 画这张图：先用一句话写出这张图要表达的判断作为主标题，按 SKILL.md 第 2 节选图型，用 figure.py example 拿样例改成 spec（先全部设成 base 色，再只给主角上色），跑 figure.py build 直到 ok 并读完 notes，用 Read 看本地 PNG；需要写进飞书时先 dry-run 再写入，最后导出飞书真实渲染图给我确认。"

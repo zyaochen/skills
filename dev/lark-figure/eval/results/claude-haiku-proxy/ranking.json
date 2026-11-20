@@ -1,0 +1,39 @@
+{
+  "type": "bars",
+  "title": "推荐和搜索服务冷启动超标，推荐最严重",
+  "subtitle": "五个服务的冷启动耗时；红色表示超过 30 秒要求，绿色表示达标",
+  "source": "来源：2026 年 11 月发布演练记录",
+  "unit": " 秒",
+  "rows": [
+    {
+      "label": "网关",
+      "value": 4,
+      "tone": "good"
+    },
+    {
+      "label": "用户服务",
+      "value": 9,
+      "tone": "good"
+    },
+    {
+      "label": "订单服务",
+      "value": 12,
+      "tone": "good"
+    },
+    {
+      "label": "搜索服务",
+      "value": 31,
+      "tone": "risk"
+    },
+    {
+      "label": "推荐服务",
+      "value": 48,
+      "tone": "risk",
+      "note": "加载 6 GB 模型文件"
+    }
+  ],
+  "ref": {
+    "value": 30,
+    "label": "发布规范要求"
+  }
+}

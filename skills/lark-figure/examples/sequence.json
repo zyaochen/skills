@@ -1,0 +1,66 @@
+{
+ "type": "sequence",
+ "title": "首 token 的 165 ms 里，有 120 ms 是调度器在排队",
+ "subtitle": "一次流式推理请求的调用顺序；虚线是返回，红色是耗时最长的一方",
+ "source": "来源：线上 trace 抽样 1 万条",
+ "actors": [
+  "客户端",
+  {
+   "name": "网关",
+   "sub": "鉴权 · 限流"
+  },
+  {
+   "name": "调度器",
+   "sub": "多租户队列",
+   "tone": "risk"
+  },
+  {
+   "name": "GPU 节点",
+   "sub": "vLLM"
+  }
+ ],
+ "messages": [
+  {
+   "from": "客户端",
+   "to": "网关",
+   "text": "POST /v1/chat"
+  },
+  {
+   "from": "网关",
+   "to": "调度器",
+   "text": "申请推理槽位"
+  },
+  {
+   "from": "调度器",
+   "to": "调度器",
+   "text": "排队 120 ms"
+  },
+  {
+   "from": "调度器",
+   "to": "GPU 节点",
+   "text": "下发 batch"
+  },
+  {
+   "from": "GPU 节点",
+   "to": "网关",
+   "text": "首 token（45 ms）",
+   "reply": true
+  },
+  {
+   "from": "网关",
+   "to": "客户端",
+   "text": "流式返回",
+   "reply": true
+  }
+ ],
+ "sections": [
+  {
+   "at": 0,
+   "label": "接入与排队"
+  },
+  {
+   "at": 3,
+   "label": "计算与返回"
+  }
+ ]
+}

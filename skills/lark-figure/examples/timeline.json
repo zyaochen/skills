@@ -1,0 +1,112 @@
+{
+ "type": "timeline",
+ "title": "梯度分桶让通信藏进计算，只剩最后 10 ms 露在外面",
+ "subtitle": "每桶计算 20 ms、AllReduce 10 ms；前 3 段通信落在下一桶的计算里",
+ "source": "来源：Llama 7B 例子，4 桶合计 90 ms",
+ "axis": {
+  "min": 0,
+  "max": 100,
+  "ticks": [
+   0,
+   20,
+   40,
+   60,
+   80,
+   100
+  ],
+  "unit": "ms"
+ },
+ "lanes": [
+  {
+   "label": "桶 1",
+   "spans": [
+    {
+     "start": 0,
+     "end": 20,
+     "text": "计算",
+     "tone": "good"
+    },
+    {
+     "start": 20,
+     "end": 30,
+     "text": "通信",
+     "dashed": true
+    }
+   ]
+  },
+  {
+   "label": "桶 2",
+   "spans": [
+    {
+     "start": 20,
+     "end": 40,
+     "text": "计算",
+     "tone": "good"
+    },
+    {
+     "start": 40,
+     "end": 50,
+     "text": "通信",
+     "dashed": true
+    }
+   ]
+  },
+  {
+   "label": "桶 3",
+   "spans": [
+    {
+     "start": 40,
+     "end": 60,
+     "text": "计算",
+     "tone": "good"
+    },
+    {
+     "start": 60,
+     "end": 70,
+     "text": "通信",
+     "dashed": true
+    }
+   ]
+  },
+  {
+   "label": "桶 4",
+   "spans": [
+    {
+     "start": 60,
+     "end": 80,
+     "text": "计算",
+     "tone": "good"
+    },
+    {
+     "start": 80,
+     "end": 90,
+     "text": "暴露",
+     "tone": "risk",
+     "emph": true
+    }
+   ]
+  }
+ ],
+ "markers": [
+  {
+   "at": 90,
+   "label": "迭代结束",
+   "tone": "risk"
+  }
+ ],
+ "legend": [
+  {
+   "label": "计算",
+   "tone": "good"
+  },
+  {
+   "label": "被下一桶盖住的通信",
+   "tone": "base",
+   "style": "dashed"
+  },
+  {
+   "label": "关键路径上的通信",
+   "tone": "risk"
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "订单导出服务 · 目标蓝图"
+  },
+  "nodes": [
+    {
+      "id": "api",
+      "label": "导出接口",
+      "sublabel": "create_export()",
+      "kind": "flow",
+      "accept": "python3 acceptance/test_api.py"
+    },
+    {
+      "id": "queue",
+      "label": "任务队列",
+      "sublabel": "内存 FIFO",
+      "kind": "external"
+    },
+    {
+      "id": "worker",
+      "label": "导出工作者",
+      "sublabel": "分页读取、写出 CSV",
+      "kind": "service",
+      "accept": "python3 acceptance/test_worker.py"
+    },
+    {
+      "id": "store",
+      "label": "订单仓储",
+      "sublabel": "只读",
+      "kind": "store"
+    },
+    {
+      "id": "files",
+      "label": "文件存储",
+      "sublabel": "按任务 ID 保存",
+      "kind": "store"
+    },
+    {
+      "id": "notify",
+      "label": "完成通知",
+      "kind": "service"
+    }
+  ],
+  "edges": [
+    {
+      "from": "api",
+      "to": "queue",
+      "label": "入队"
+    },
+    {
+      "from": "queue",
+      "to": "worker",
+      "label": "消费"
+    },
+    {
+      "from": "worker",
+      "to": "store",
+      "label": "读取"
+    },
+    {
+      "from": "worker",
+      "to": "files",
+      "label": "写出"
+    },
+    {
+      "from": "worker",
+      "to": "notify",
+      "label": "完成"
+    }
+  ],
+  "depends": {
+    "api": [
+      "queue"
+    ],
+    "worker": [
+      "queue",
+      "store",
+      "files"
+    ],
+    "notify": [
+      "worker"
+    ]
+  }
+}

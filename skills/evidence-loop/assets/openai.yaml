@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence Loop"
+  short_description: "带机械裁判的自主工程循环：澄清约定、逐次裁决、可验证交付"
+  default_prompt: "用 evidence-loop 处理这个任务：先判断它能否用一条命令判定完成（不能就先和我谈清标准）；把约定草案（场景、可编辑范围、冻结路径、命令原文、基线结果、目标、预算、风险）一次性给我确认；批准后再 init 并进入循环，每次 attempt 后用一两句话汇报；status 为 handoff 后 verify、写 review.md、report，把 handoff.html 交给我，等我明确批准后再合并。"

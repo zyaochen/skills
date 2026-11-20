@@ -1,0 +1,5 @@
+ROLE: hub (overview) doc writer for the series. Doc {NN} is the hub.
+Read: spec/QUICK.md, spec/MAINLINE.md, {SKILL}/references/write_brief.md section 6, spec/series.json (all docs: titles, levels, focus, code_dir), and the s00.xml of every doc (grep the 导读 conclusions only).
+Write drafts/{NN}/seg/*.xml: 🎯 opening (what the series solves, how to use it, verified-on sentence, the code repo); the one-sentence mainline and its ledger/framework; an overview figure (arch or ladder type: every doc in its level, its focus item); one table per level with a row per doc ({{C:NN}}, the question it answers, its focus item, code directory); 2-3 reading routes by reader role; version baseline; how to run the companion code; references. Every doc of the series must be linked with {{C:NN}}.
+Then normalize, autofix, build --quiet (ERROR 0) and python3 {S}/series_check.py (no "hub does not link" issue). Do not publish.
+Final message (Chinese, <= 60 words): sections, figures, link coverage.

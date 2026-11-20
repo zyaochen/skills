@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 530" width="1200" height="530">
+<rect x="0" y="0" width="1200" height="530" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">GEMM 逐步调优：最好的手写版本仍差稠密峰值约四成</text>
+<text x="40" y="92" font-size="14" fill="#646A73">条形是各版本实测吞吐；红色虚线是 BF16 稠密峰值，越靠近越好</text>
+<text x="258" y="198" font-size="14" fill="#1F2329" text-anchor="end">朴素三重循环</text>
+<rect x="270" y="180" width="760" height="26" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="270" y="180" width="9" height="26" rx="4" fill="#8F959E" stroke="#8F959E" stroke-width="1"/>
+<text x="287" y="198" font-size="13" fill="#646A73">12 TFLOPS</text>
+<text x="258" y="240" font-size="14" fill="#1F2329" text-anchor="end">共享内存分块</text>
+<rect x="270" y="222" width="760" height="26" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="270" y="222" width="138" height="26" rx="4" fill="#3370FF" stroke="#3370FF" stroke-width="1"/>
+<text x="416" y="240" font-size="13" fill="#646A73">180 TFLOPS</text>
+<text x="258" y="282" font-size="14" fill="#1F2329" text-anchor="end">寄存器分块</text>
+<rect x="270" y="264" width="760" height="26" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="270" y="264" width="323" height="26" rx="4" fill="#3370FF" stroke="#3370FF" stroke-width="1"/>
+<text x="601" y="282" font-size="13" fill="#646A73">420 TFLOPS</text>
+<text x="258" y="324" font-size="14" fill="#1F2329" text-anchor="end">warp 分块 + 双缓冲</text>
+<rect x="270" y="306" width="760" height="26" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="270" y="306" width="469" height="26" rx="4" fill="#3370FF" stroke="#3370FF" stroke-width="1"/>
+<text x="747" y="324" font-size="13" fill="#646A73">610 TFLOPS</text>
+<text x="258" y="366" font-size="14" fill="#1F2329" text-anchor="end">cuBLAS</text>
+<rect x="270" y="348" width="760" height="26" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="270" y="348" width="538" height="26" rx="4" fill="#34C724" stroke="#34C724" stroke-width="1"/>
+<text x="816" y="366" font-size="13" fill="#646A73">700 TFLOPS  参照</text>
+<line x1="1030" y1="172" x2="1030" y2="382" stroke="#F98E8B" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="1030" y="166" font-size="12" fill="#D83931" text-anchor="middle">稠密峰值 989</text>
+<rect x="40" y="414" width="1120" height="49" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="56" y="443" font-size="15" fill="#1F2329">每一级分块都在提高数据复用；剩下的差距主要是搬运没有完全藏到计算后面。</text>
+<text x="40" y="506" font-size="12" fill="#646A73">来源：本 skill 示例数据；峰值取 H100 SXM BF16 稠密 989 TFLOPS</text>
+</svg>

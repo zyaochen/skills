@@ -1,0 +1,53 @@
+{
+ "type": "roofline",
+ "title": "除了大矩阵乘，常见算子都落在拐点 295 左边：它们等的是带宽，不是算力",
+ "subtitle": "H100 SXM BF16 稠密算力与 HBM3 带宽；实线是标称值，虚线是实测上限",
+ "source": "来源：本篇 sim_roofline.py 输出（示意数据）",
+ "roofs": [
+  {
+   "name": "标称 989 TFLOPS · 3.35 TB/s",
+   "peak": 989,
+   "bandwidth": 3.35
+  },
+  {
+   "name": "实测 786 TFLOPS · 3.02 TB/s",
+   "peak": 786,
+   "bandwidth": 3.02,
+   "tone": "base"
+  }
+ ],
+ "points": [
+  {
+   "label": "ReLU",
+   "x": 0.125,
+   "y": 0.36
+  },
+  {
+   "label": "LayerNorm",
+   "x": 1.0,
+   "y": 2.6
+  },
+  {
+   "label": "Decode GEMV",
+   "x": 2.0,
+   "y": 5.4
+  },
+  {
+   "label": "FlashAttention",
+   "x": 160,
+   "y": 380,
+   "tone": "contrast"
+  },
+  {
+   "label": "GEMM 4096³",
+   "x": 1365,
+   "y": 720,
+   "tone": "good",
+   "emph": true
+  }
+ ],
+ "regions": [
+  "带宽受限",
+  "算力受限"
+ ]
+}

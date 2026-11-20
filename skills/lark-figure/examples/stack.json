@@ -1,0 +1,81 @@
+{
+ "type": "stack",
+ "title": "TP 吃机内带宽，DP 吃机间带宽，推荐配置让两者都不饱和",
+ "subtitle": "上半部分是三种并行各自的通信特征，下半部分是推荐配置的实测",
+ "source": "来源：本篇 sim_parallel.py 输出",
+ "parts": [
+  {
+   "label": "三种并行的通信特征",
+   "type": "compare",
+   "cards": [
+    {
+     "title": "TP",
+     "subtitle": "张量并行",
+     "tone": "main",
+     "rows": [
+      [
+       "通信",
+       "机内 NVLink"
+      ],
+      [
+       "带宽",
+       "450 GB/s"
+      ]
+     ]
+    },
+    {
+     "title": "PP",
+     "subtitle": "流水线并行",
+     "tone": "contrast",
+     "rows": [
+      [
+       "通信",
+       "跨机点对点"
+      ],
+      [
+       "带宽",
+       "50 GB/s"
+      ]
+     ]
+    },
+    {
+     "title": "DP",
+     "subtitle": "数据并行",
+     "tone": "good",
+     "rows": [
+      [
+       "通信",
+       "AllReduce"
+      ],
+      [
+       "带宽",
+       "50 GB/s"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "label": "推荐配置实测",
+   "type": "bars",
+   "unit": " ms",
+   "rows": [
+    {
+     "label": "TP 通信",
+     "value": 12,
+     "tone": "main"
+    },
+    {
+     "label": "PP 通信",
+     "value": 9,
+     "tone": "contrast"
+    },
+    {
+     "label": "DP 通信",
+     "value": 19,
+     "tone": "good"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<rect x="0" y="0" width="1200" height="630" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">把等待拆成账：overlap 之后通信不再暴露在关键路径上</text>
+<text x="40" y="92" font-size="14" fill="#646A73">每条是一步训练的时间账，长度按毫秒等比；蓝色是有效计算，其余是暴露的等待</text>
+<text x="40" y="158" font-size="15" fill="#1F2329" font-weight="bold">优化前：1000 ms / step</text>
+<rect x="40" y="170" width="694" height="40" rx="4" fill="#3370FF" stroke="#FFFFFF" stroke-width="2"/>
+<rect x="734" y="170" width="235" height="40" rx="4" fill="#FF8800" stroke="#FFFFFF" stroke-width="2"/>
+<rect x="970" y="170" width="101" height="40" rx="4" fill="#8F959E" stroke="#FFFFFF" stroke-width="2"/>
+<rect x="1070" y="170" width="90" height="40" rx="4" fill="#F54A45" stroke="#FFFFFF" stroke-width="2"/>
+<line x1="387" y1="212" x2="387" y2="222" stroke="#82A7FC" stroke-width="1"/>
+<text x="348" y="236" font-size="13" fill="#245BDB">计算 620 ms</text>
+<text x="348" y="254" font-size="12" fill="#646A73">62%</text>
+<line x1="852" y1="212" x2="852" y2="222" stroke="#FFBA6B" stroke-width="1"/>
+<text x="806" y="236" font-size="13" fill="#D46B08">等通信 210 ms</text>
+<text x="806" y="254" font-size="12" fill="#646A73">21%</text>
+<line x1="1020" y1="212" x2="1020" y2="222" stroke="#DEE0E3" stroke-width="1"/>
+<text x="978" y="236" font-size="13" fill="#646A73">等主机 90 ms</text>
+<text x="978" y="254" font-size="12" fill="#646A73">9%</text>
+<line x1="1115" y1="212" x2="1115" y2="222" stroke="#F98E8B" stroke-width="1"/>
+<text x="1080" y="236" font-size="13" fill="#D83931">空转 80 ms</text>
+<text x="1080" y="254" font-size="12" fill="#646A73">8%</text>
+<text x="40" y="310" font-size="15" fill="#1F2329" font-weight="bold">bucket overlap 之后：820 ms / step</text>
+<rect x="40" y="322" width="694" height="40" rx="4" fill="#3370FF" stroke="#FFFFFF" stroke-width="2"/>
+<rect x="734" y="322" width="67" height="40" rx="4" fill="#FF8800" stroke="#FFFFFF" stroke-width="2"/>
+<rect x="802" y="322" width="101" height="40" rx="4" fill="#8F959E" stroke="#FFFFFF" stroke-width="2"/>
+<rect x="902" y="322" width="56" height="40" rx="4" fill="#F54A45" stroke="#FFFFFF" stroke-width="2"/>
+<line x1="387" y1="364" x2="387" y2="374" stroke="#82A7FC" stroke-width="1"/>
+<text x="348" y="388" font-size="13" fill="#245BDB">计算 620 ms</text>
+<text x="348" y="406" font-size="12" fill="#646A73">76%</text>
+<line x1="768" y1="364" x2="768" y2="374" stroke="#FFBA6B" stroke-width="1"/>
+<text x="726" y="388" font-size="13" fill="#D46B08">等通信 60 ms</text>
+<text x="726" y="406" font-size="12" fill="#646A73">7%</text>
+<line x1="852" y1="364" x2="852" y2="418" stroke="#DEE0E3" stroke-width="1"/>
+<text x="810" y="432" font-size="13" fill="#646A73">等主机 90 ms</text>
+<text x="810" y="450" font-size="12" fill="#646A73">11%</text>
+<line x1="930" y1="364" x2="930" y2="374" stroke="#F98E8B" stroke-width="1"/>
+<text x="887" y="388" font-size="13" fill="#D83931">空转 50 ms</text>
+<text x="887" y="406" font-size="12" fill="#646A73">6%</text>
+<rect x="40" y="482" width="1120" height="82" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="56" y="513" font-size="18" fill="#1F2329" font-weight="bold">读法</text>
+<text x="56" y="543" font-size="15" fill="#646A73">通信从 210 ms 降到 60 ms：150 ms 藏到了反向计算后面。剩下的 90 ms 主机侧等待成了下一个瓶颈。</text>
+<text x="40" y="606" font-size="12" fill="#646A73">来源：本 skill 示例数据，演示时间账的画法</text>
+</svg>

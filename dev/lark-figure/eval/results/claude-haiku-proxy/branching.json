@@ -1,0 +1,109 @@
+{
+  "type": "graph",
+  "title": "查询数据延迟 p99 从 14 分钟降到 3 分钟",
+  "subtitle": "左到右是日志流向；绿色是新增旁路，改进了下游积压",
+  "source": "来源：日志平台 2026 年 10 月复盘",
+  "stages": [
+    {
+      "name": "采集",
+      "nodes": [
+        {
+          "id": "agent",
+          "title": "Agent",
+          "sub": "采集端",
+          "tone": "base"
+        }
+      ]
+    },
+    {
+      "name": "消息队列",
+      "nodes": [
+        {
+          "id": "kafka",
+          "title": "Kafka",
+          "tone": "base"
+        }
+      ]
+    },
+    {
+      "name": "分流",
+      "nodes": [
+        {
+          "id": "flink",
+          "title": "Flink",
+          "sub": "清洗 · 聚合"
+        },
+        {
+          "id": "archive",
+          "title": "对象存储",
+          "sub": "归档 180 天",
+          "tone": "base"
+        }
+      ]
+    },
+    {
+      "name": "查询和缓冲",
+      "nodes": [
+        {
+          "id": "clickhouse",
+          "title": "ClickHouse",
+          "sub": "在线查询",
+          "tone": "main"
+        },
+        {
+          "id": "bypass_storage",
+          "title": "对象存储",
+          "sub": "积压缓冲",
+          "tone": "good",
+          "emph": true
+        }
+      ]
+    },
+    {
+      "name": "告警",
+      "nodes": [
+        {
+          "id": "alert",
+          "title": "告警服务",
+          "tone": "base"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "agent",
+      "to": "kafka"
+    },
+    {
+      "from": "kafka",
+      "to": "flink"
+    },
+    {
+      "from": "kafka",
+      "to": "archive"
+    },
+    {
+      "from": "flink",
+      "to": "clickhouse",
+      "label": "实时写入"
+    },
+    {
+      "from": "flink",
+      "to": "bypass_storage",
+      "label": "积压 >5min",
+      "tone": "good"
+    },
+    {
+      "from": "bypass_storage",
+      "to": "clickhouse",
+      "label": "积压消掉回灌",
+      "dashed": true,
+      "tone": "good"
+    },
+    {
+      "from": "clickhouse",
+      "to": "alert"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+ "summary": {
+  "label": "kimi-k3",
+  "cases": 6,
+  "clean_builds": 6,
+  "right_type": 6,
+  "within_3_families": 6,
+  "within_2_emphasis": 6,
+  "title_is_claim": 6,
+  "fields_dropped": 0,
+  "fields_rewritten": 0
+ },
+ "rows": [
+  {
+   "case": "branching",
+   "produced": true,
+   "builds": true,
+   "lint_errors": 0,
+   "type": "graph",
+   "type_ok": true,
+   "rewritten": 0,
+   "dropped": 0,
+   "families": 2,
+   "emphasised": 2,
+   "title_is_claim": true,
+   "has_source": true
+  },
+  {
+   "case": "calls",
+   "produced": true,
+   "builds": true,
+   "lint_errors": 0,
+   "type": "sequence",
+   "type_ok": true,
+   "rewritten": 0,
+   "dropped": 0,
+   "families": 1,
+   "emphasised": 0,
+   "title_is_claim": true,
+   "has_source": true
+  },
+  {
+   "case": "loop",
+   "produced": true,
+   "builds": true,
+   "lint_errors": 0,
+   "type": "cycle",
+   "type_ok": true,
+   "rewritten": 0,
+   "dropped": 0,
+   "families": 1,
+   "emphasised": 1,
+   "title_is_claim": true,
+   "has_source": true
+  },
+  {
+   "case": "ranking",
+   "produced": true,
+   "builds": true,
+   "lint_errors": 0,
+   "type": "bars",
+   "type_ok": true,
+   "rewritten": 0,
+   "dropped": 0,
+   "families": 2,
+   "emphasised": 0,
+   "title_is_claim": true,
+   "has_source": true
+  },
+  {
+   "case": "options",
+   "produced": true,
+   "builds": true,
+   "lint_errors": 0,
+   "type": "compare",
+   "type_ok": true,
+   "rewritten": 0,
+   "dropped": 0,
+   "families": 3,
+   "emphasised": 1,
+   "title_is_claim": true,
+   "has_source": true
+  },
+  {
+   "case": "breakdown",
+   "produced": true,
+   "builds": true,
+   "lint_errors": 0,
+   "type": "tree",
+   "type_ok": true,
+   "rewritten": 0,
+   "dropped": 0,
+   "families": 2,
+   "emphasised": 1,
+   "title_is_claim": true,
+   "has_source": true
+  }
+ ]
+}

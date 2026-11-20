@@ -1,0 +1,16 @@
+{
+ "type": "bars",
+ "title": "推荐、搜索冷启动超标，推荐 48 秒最严重",
+ "subtitle": "大号数字是各服务冷启动到可服务的耗时；红色超过 30 秒规范，绿色达标",
+ "source": "来源：2026 年 11 月发布演练记录",
+ "unit": " 秒",
+ "sort": "desc",
+ "rows": [
+  {"label": "推荐服务", "value": 48, "tone": "risk", "note": "加载 6 GB 模型"},
+  {"label": "搜索服务", "value": 31, "tone": "risk"},
+  {"label": "订单服务", "value": 12, "tone": "good"},
+  {"label": "用户服务", "value": 9, "tone": "good"},
+  {"label": "网关", "value": 4, "tone": "good"}
+ ],
+ "ref": {"value": 30, "label": "规范 30 秒"}
+}

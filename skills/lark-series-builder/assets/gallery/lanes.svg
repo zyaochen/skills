@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 570" width="1200" height="570">
+<rect x="0" y="0" width="1200" height="570" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">把 all-reduce 切成桶，通信就能和反向计算重叠</text>
+<text x="40" y="92" font-size="14" fill="#646A73">横轴是时间（ms），每条泳道是一个 CUDA stream；橙色块露在计算之外的部分才算等待</text>
+<text x="40" y="160" font-size="15" fill="#1F2329" font-weight="bold">串行：反向算完才开始通信，step 180 ms</text>
+<text x="178" y="202" font-size="14" fill="#1F2329" text-anchor="end">计算 stream</text>
+<rect x="190" y="180" width="970" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="190" y="183" width="194" height="28" rx="4" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="287" y="202" font-size="12" fill="#245BDB" text-anchor="middle">前向</text>
+<rect x="384" y="183" width="388" height="28" rx="4" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="578" y="202" font-size="12" fill="#245BDB" text-anchor="middle">反向</text>
+<text x="178" y="250" font-size="14" fill="#1F2329" text-anchor="end">通信 stream</text>
+<rect x="190" y="228" width="970" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="772" y="231" width="291" height="28" rx="4" fill="#FFF1E0" stroke="#FFBA6B" stroke-width="1"/>
+<text x="918" y="250" font-size="12" fill="#D46B08" text-anchor="middle">all-reduce 全部梯度</text>
+<text x="40" y="306" font-size="15" fill="#1F2329" font-weight="bold">分桶 overlap：每个桶算完就发，step 135 ms</text>
+<text x="178" y="348" font-size="14" fill="#1F2329" text-anchor="end">计算 stream</text>
+<rect x="190" y="326" width="970" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="190" y="329" width="194" height="28" rx="4" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="287" y="348" font-size="12" fill="#245BDB" text-anchor="middle">前向</text>
+<rect x="384" y="329" width="388" height="28" rx="4" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="578" y="348" font-size="12" fill="#245BDB" text-anchor="middle">反向</text>
+<text x="178" y="396" font-size="14" fill="#1F2329" text-anchor="end">通信 stream</text>
+<rect x="190" y="374" width="970" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="481" y="377" width="146" height="28" rx="4" fill="#FFF1E0" stroke="#FFBA6B" stroke-width="1"/>
+<text x="554" y="396" font-size="12" fill="#D46B08" text-anchor="middle">桶 1</text>
+<rect x="626" y="377" width="146" height="28" rx="4" fill="#FFF1E0" stroke="#FFBA6B" stroke-width="1"/>
+<text x="699" y="396" font-size="12" fill="#D46B08" text-anchor="middle">桶 2</text>
+<rect x="772" y="377" width="73" height="28" rx="4" fill="#FFF1E0" stroke="#FFBA6B" stroke-width="1"/>
+<text x="808" y="396" font-size="12" fill="#D46B08" text-anchor="middle">桶 3</text>
+<line x1="190" y1="322" x2="190" y2="412" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="190" y="430" font-size="12" fill="#646A73" text-anchor="middle">0 ms</text>
+<line x1="384" y1="322" x2="384" y2="412" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="384" y="430" font-size="12" fill="#646A73" text-anchor="middle">40 ms</text>
+<line x1="578" y1="322" x2="578" y2="412" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="578" y="430" font-size="12" fill="#646A73" text-anchor="middle">80 ms</text>
+<line x1="772" y1="322" x2="772" y2="412" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="772" y="430" font-size="12" fill="#646A73" text-anchor="middle">120 ms</text>
+<line x1="966" y1="322" x2="966" y2="412" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="966" y="430" font-size="12" fill="#646A73" text-anchor="middle">160 ms</text>
+<line x1="1160" y1="322" x2="1160" y2="412" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="1160" y="430" font-size="12" fill="#646A73" text-anchor="middle">200 ms</text>
+<rect x="40" y="458" width="1120" height="49" rx="12" fill="#E4FAE1" stroke="#8EE085" stroke-width="1"/>
+<text x="56" y="487" font-size="15" fill="#1F2329">暴露的通信从 60 ms 降到 15 ms：只剩最后一个桶露在反向计算之后。</text>
+<text x="40" y="546" font-size="12" fill="#646A73">来源：本 skill 示例数据，演示 overlap 的画法</text>
+</svg>

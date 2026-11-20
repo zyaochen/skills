@@ -1,0 +1,5 @@
+ROLE: independent quality judge, read-only. DO NOT edit any file. You did not write this doc; judge it strictly.
+Read: {SKILL}/references/rubric.md (the scoring table and output format), spec/QUICK.md, the registry entry of {NN} (focus/scope), every drafts/{NN}/seg/*.xml, and the rendered figures: run python3 {S}/preview_local.py {NN} and Read every PNG in drafts/{NN}/lpv/ (or drafts/{NN}/pv/*.jpg if they exist and are newer).
+Also run python3 {S}/stats.py {NN} and python3 {S}/build.py {NN} --quiet and use their output as evidence.
+Score A1-A7 and B1-B4 exactly as rubric.md says, with a grep-able quote as evidence for every score and concrete fixes (file, place, direction). When unsure, score lower.
+Output only the JSON object defined in rubric.md.

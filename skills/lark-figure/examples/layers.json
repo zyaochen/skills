@@ -1,0 +1,62 @@
+{
+ "type": "layers",
+ "title": "训练平台分四层，调度层是唯一跨团队共享的瓶颈",
+ "subtitle": "自上而下是请求方向；红色模块是本季度要改造的部分",
+ "source": "来源：平台架构评审 2026Q3",
+ "layers": [
+  {
+   "name": "接入层",
+   "note": "用户入口",
+   "tone": "base",
+   "items": [
+    "Web 控制台",
+    "CLI",
+    "OpenAPI"
+   ]
+  },
+  {
+   "name": "调度层",
+   "note": "多租户",
+   "items": [
+    {
+     "label": "队列调度",
+     "emph": true,
+     "tone": "risk"
+    },
+    "配额",
+    {
+     "label": "Gang 调度",
+     "sub": "整组分配"
+    }
+   ]
+  },
+  {
+   "name": "运行时",
+   "items": [
+    "PyTorch",
+    "DeepSpeed",
+    "Megatron",
+    "vLLM"
+   ]
+  },
+  {
+   "name": "基础设施",
+   "tone": "base",
+   "items": [
+    "K8s",
+    "RDMA 网络",
+    "并行文件系统",
+    "GPU 节点"
+   ]
+  }
+ ],
+ "side": {
+  "title": "可观测性",
+  "items": [
+   "指标",
+   "日志",
+   "Trace"
+  ],
+  "tone": "good"
+ }
+}

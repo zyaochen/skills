@@ -1,0 +1,19 @@
+{
+ "_readme": "Minimal runnable series used by selftest.sh. Tokens are fake; never publish this.",
+ "name": "示例系列",
+ "prefix": "EX",
+ "verified_on": "2026 年 11 月 4 日",
+ "refs_asof": "2026 年 11 月初",
+ "hub": {"num": "00", "token": "EXAMPLEHUBTOKEN0000000000000", "title": "EX-00｜索引｜示例系列：路线与主线", "focus": "路线", "scope": "索引"},
+ "docs": [
+  {"num": "01", "token": "EXAMPLEDOCTOKEN0100000000000", "title": "EX-01｜示例｜锁页内存：把 H2D 拷贝藏到计算后面",
+   "level": "L1", "status": "new", "focus": "GPU 等主机拷贝", "scope": "pinned memory 与异步拷贝", "prev": "00", "next": "02"},
+  {"num": "02", "token": "EXAMPLEDOCTOKEN0200000000000", "title": "EX-02｜示例｜第二篇：只登记未写",
+   "level": "L1", "status": "new", "focus": "占位", "scope": "占位", "prev": "01", "next": null}
+ ],
+ "template": {"position": "🧭 主线位置", "required_terms": ["定天花板", "测实际", "复测"]},
+ "thresholds": {"chapters": [2, 13], "prose_chars": [800, 40000], "refs": [2, 60], "figures": [1, 12],
+                "pitfalls": [1, 6], "chapter_cjk_min": 150, "s00_cjk_min": 150, "cites_per_chapter_min": 1,
+                "h2_per_chapter": [1, 4], "guide_items": [2, 7]},
+ "audit": {"reference_values": ["PCIe Gen5 x16 单向约 63 GB/s（双向约 126）"]}
+}

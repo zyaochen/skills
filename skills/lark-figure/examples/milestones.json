@@ -1,0 +1,49 @@
+{
+ "type": "milestones",
+ "title": "推理平台一年三次换代，下一步是 PD 分离",
+ "subtitle": "绿色已上线，蓝色在做，灰色规划中",
+ "source": "来源：平台 roadmap 2026",
+ "items": [
+  {
+   "when": "2026-01",
+   "title": "静态批处理",
+   "lines": [
+    "单模型单实例"
+   ],
+   "tone": "good"
+  },
+  {
+   "when": "2026-04",
+   "title": "连续批处理",
+   "lines": [
+    "吞吐 ×2.3"
+   ],
+   "tone": "good"
+  },
+  {
+   "when": "2026-08",
+   "title": "Prefix 缓存",
+   "lines": [
+    "首 token 时延 -40%"
+   ],
+   "tone": "good"
+  },
+  {
+   "when": "2026-11",
+   "title": "PD 分离",
+   "lines": [
+    "预填与解码分池"
+   ],
+   "tone": "main",
+   "now": true
+  },
+  {
+   "when": "2027-Q2",
+   "title": "多模型混部",
+   "lines": [
+    "按 SLO 调度"
+   ],
+   "tone": "base"
+  }
+ ]
+}

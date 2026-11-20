@@ -1,0 +1,45 @@
+{
+ "type": "tree",
+ "title": "P99 延迟超标，七成来自排队而不是计算",
+ "subtitle": "按耗时拆解一次慢请求；红色是本次要治理的分支",
+ "source": "来源：慢请求 trace 抽样 500 条",
+ "root": {
+  "label": "P99 1.8 s",
+  "sub": "目标 800 ms",
+  "tone": "main",
+  "children": [
+   {
+    "label": "排队 1.2 s",
+    "tone": "risk",
+    "emph": true,
+    "children": [
+     {
+      "label": "调度队列",
+      "sub": "0.9 s"
+     },
+     {
+      "label": "批次等待",
+      "sub": "0.3 s"
+     }
+    ]
+   },
+   {
+    "label": "计算 0.5 s",
+    "children": [
+     {
+      "label": "Prefill",
+      "sub": "0.3 s"
+     },
+     {
+      "label": "Decode",
+      "sub": "0.2 s"
+     }
+    ]
+   },
+   {
+    "label": "网络 0.1 s",
+    "tone": "base"
+   }
+  ]
+ }
+}

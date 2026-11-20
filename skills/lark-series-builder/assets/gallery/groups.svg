@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="1200" height="540">
+<rect x="0" y="0" width="1200" height="540" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">新一代矩阵指令在长序列注意力上领先最多，短 GEMM 上差距不大</text>
+<text x="40" y="92" font-size="14" fill="#646A73">每组是一种负载，条形是两代指令的实测吞吐（TFLOPS），共用一把刻度</text>
+<rect x="220" y="149" width="14" height="14" rx="3" fill="#8F959E" stroke="#8F959E" stroke-width="1"/>
+<text x="240" y="160" font-size="13" fill="#646A73">上一代 warpgroup 指令</text>
+<rect x="412" y="149" width="14" height="14" rx="3" fill="#3370FF" stroke="#3370FF" stroke-width="1"/>
+<text x="432" y="160" font-size="13" fill="#646A73">新一代指令</text>
+<text x="208" y="216" font-size="14" fill="#1F2329" font-weight="bold" text-anchor="end">大 GEMM 8192³</text>
+<rect x="220" y="184" width="845" height="24" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="220" y="184" width="444" height="24" rx="4" fill="#8F959E" stroke="#8F959E" stroke-width="1"/>
+<text x="672" y="202" font-size="13" fill="#646A73">620 TFLOPS</text>
+<rect x="220" y="214" width="845" height="24" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="220" y="214" width="845" height="24" rx="4" fill="#3370FF" stroke="#3370FF" stroke-width="1"/>
+<text x="1073" y="232" font-size="13" fill="#646A73">1180 TFLOPS</text>
+<text x="208" y="292" font-size="14" fill="#1F2329" font-weight="bold" text-anchor="end">注意力 前向 8K</text>
+<rect x="220" y="260" width="845" height="24" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="220" y="260" width="344" height="24" rx="4" fill="#8F959E" stroke="#8F959E" stroke-width="1"/>
+<text x="572" y="278" font-size="13" fill="#646A73">480 TFLOPS</text>
+<rect x="220" y="290" width="845" height="24" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="220" y="290" width="723" height="24" rx="4" fill="#3370FF" stroke="#3370FF" stroke-width="1"/>
+<text x="951" y="308" font-size="13" fill="#646A73">1010 TFLOPS</text>
+<text x="208" y="368" font-size="14" fill="#1F2329" font-weight="bold" text-anchor="end">小 GEMM 512³</text>
+<rect x="220" y="336" width="845" height="24" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="220" y="336" width="150" height="24" rx="4" fill="#8F959E" stroke="#8F959E" stroke-width="1"/>
+<text x="378" y="354" font-size="13" fill="#646A73">210 TFLOPS</text>
+<rect x="220" y="366" width="845" height="24" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="220" y="366" width="186" height="24" rx="4" fill="#3370FF" stroke="#3370FF" stroke-width="1"/>
+<text x="414" y="384" font-size="13" fill="#646A73">260 TFLOPS</text>
+<rect x="40" y="426" width="1120" height="49" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="56" y="455" font-size="15" fill="#1F2329">差距随负载变大而变大：小矩阵受发射和同步开销限制，新指令的吞吐优势用不上。</text>
+<text x="40" y="516" font-size="12" fill="#646A73">来源：本 skill 示例数据，演示分组条形图的画法</text>
+</svg>

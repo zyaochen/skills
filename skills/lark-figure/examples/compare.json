@@ -1,0 +1,76 @@
+{
+ "type": "compare",
+ "title": "同样 64 卡，TP8×PP2×DP4 比纯数据并行省 98% 显存",
+ "subtitle": "三种切法的单卡显存、每步通信和 MFU；✗ = 旧方案，✓ = 推荐",
+ "source": "来源：本篇 sim_parallel.py 输出",
+ "cards": [
+  {
+   "title": "纯 DP",
+   "subtitle": "DP=64",
+   "id": "①",
+   "icon": "✗",
+   "verdict": "显存放不下",
+   "rows": [
+    [
+     "显存 / 卡",
+     {
+      "v": "90 GB",
+      "tone": "risk"
+     }
+    ],
+    [
+     "通信 / 步",
+     "160 ms"
+    ],
+    [
+     "MFU",
+     "24%"
+    ]
+   ]
+  },
+  {
+   "title": "TP8 · PP2 · DP4",
+   "subtitle": "机内切张量，机间切流水",
+   "id": "②",
+   "icon": "✓",
+   "primary": true,
+   "tone": "good",
+   "verdict": "推荐",
+   "rows": [
+    [
+     "显存 / 卡",
+     "1.5 GB"
+    ],
+    [
+     "通信 / 步",
+     "40 ms"
+    ],
+    [
+     "MFU",
+     "35–45%"
+    ]
+   ]
+  },
+  {
+   "title": "PP8",
+   "subtitle": "只切流水线",
+   "id": "③",
+   "icon": "✗",
+   "verdict": "气泡大",
+   "rows": [
+    [
+     "显存 / 卡",
+     "11 GB"
+    ],
+    [
+     "通信 / 步",
+     "25 ms"
+    ],
+    [
+     "MFU",
+     "18%"
+    ]
+   ]
+  }
+ ]
+}

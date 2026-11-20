@@ -1,0 +1,5 @@
+<h1>第 2 章 · 上线前核对清单</h1>
+<h2>2.1 改法与复测</h2>
+<p>DataLoader 打开 pin_memory，拷贝加 non_blocking，再复测同一负载的时间线{{r:pytorch_pin}}。复测时确认 H2D 段和上一步计算重叠，空白消失。锁页内存不能无限制地申请：它从系统内存里钉住物理页，申请过多会挤压主机上其他进程的内存，所以只给 DataLoader 的输出缓冲用，不要把整个数据集都钉住。</p>
+<callout emoji="📌" background-color="rgb(255,245,235)" border-color="rgb(255,186,107)"><p><b>上线前核对清单</b></p><ul><li>DataLoader 的 pin_memory 已打开</li><li>to(device) 带 non_blocking</li><li>nsys 时间线上 H2D 与计算重叠</li></ul></callout>
+<callout emoji="🔑" background-color="rgb(255,245,235)" border-color="rgb(255,186,107)"><p><b>本章要点</b>：锁页加异步把拷贝藏到计算后面；本章消掉的是 GPU 等主机拷贝的那部分等待。</p></callout>

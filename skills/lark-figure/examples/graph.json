@@ -1,0 +1,102 @@
+{
+ "type": "graph",
+ "title": "七成流量走在线链路，缓存命中的请求不再占用 GPU",
+ "subtitle": "从左到右是一次请求经过的环节；绿色是本季度新增的缓存旁路",
+ "source": "来源：推理网关 2026-10 流量统计",
+ "stages": [
+  {
+   "name": "入口",
+   "nodes": [
+    {
+     "id": "gw",
+     "title": "推理网关",
+     "sub": "鉴权 · 限流",
+     "tone": "base"
+    }
+   ]
+  },
+  {
+   "name": "分流",
+   "nodes": [
+    {
+     "id": "online",
+     "title": "在线链路",
+     "sub": "流量 70%"
+    },
+    {
+     "id": "batch",
+     "title": "批量链路",
+     "sub": "流量 30%",
+     "tone": "base"
+    }
+   ]
+  },
+  {
+   "name": "执行",
+   "nodes": [
+    {
+     "id": "cache",
+     "title": "Prefix 缓存",
+     "sub": "命中率 62%",
+     "tone": "good",
+     "emph": true
+    },
+    {
+     "id": "gpu",
+     "title": "GPU 推理池"
+    },
+    {
+     "id": "spot",
+     "title": "Spot 批处理池",
+     "tone": "base"
+    }
+   ]
+  },
+  {
+   "name": "观测",
+   "nodes": [
+    {
+     "id": "mon",
+     "title": "监控告警",
+     "sub": "延迟 · 成本",
+     "tone": "base"
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "gw",
+   "to": "online"
+  },
+  {
+   "from": "gw",
+   "to": "batch"
+  },
+  {
+   "from": "online",
+   "to": "cache"
+  },
+  {
+   "from": "cache",
+   "to": "gpu",
+   "label": "未命中"
+  },
+  {
+   "from": "batch",
+   "to": "spot"
+  },
+  {
+   "from": "cache",
+   "to": "mon"
+  },
+  {
+   "from": "gpu",
+   "to": "mon"
+  },
+  {
+   "from": "spot",
+   "to": "mon"
+  }
+ ]
+}

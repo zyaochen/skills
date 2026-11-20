@@ -1,0 +1,52 @@
+{
+ "type": "line",
+ "title": "序列长度翻 4 倍，Attention 激活显存涨 16 倍",
+ "subtitle": "单卡激活显存随序列长度变化；Ring Attention 切到 8 卡后近似线性",
+ "source": "来源：本篇 sim_memory.py --seq 输出",
+ "x": {
+  "labels": [
+   "8K",
+   "16K",
+   "24K",
+   "32K"
+  ],
+  "title": "序列长度 (tokens)"
+ },
+ "y": {
+  "title": "激活显存",
+  "unit": " GB",
+  "min": 0
+ },
+ "series": [
+  {
+   "name": "不切分",
+   "values": [
+    2.1,
+    8.4,
+    18.9,
+    33.6
+   ],
+   "tone": "main",
+   "area": true,
+   "labels": true
+  },
+  {
+   "name": "Ring Attention ×8",
+   "values": [
+    0.26,
+    1.05,
+    2.4,
+    4.2
+   ],
+   "tone": "good",
+   "labels": true
+  }
+ ],
+ "notes": [
+  {
+   "series": 0,
+   "index": 2,
+   "text": "O(S²)"
+  }
+ ]
+}

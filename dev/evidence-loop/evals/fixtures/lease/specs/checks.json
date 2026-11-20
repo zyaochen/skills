@@ -1,0 +1,20 @@
+{
+  "design": "specs/design.md",
+  "screening": {"triggers": ["ownership", "retry_timeout"], "rationale": "租约过期后旧持有者仍可能带着旧令牌迟到写入"},
+  "unmodeled": ["时钟漂移、网络分区与存储副本间的复制延迟"],
+  "assumptions": ["存储端按令牌比较并写入是原子的", "令牌由单一租约服务发放且严格递增"],
+  "faults": ["Expire"],
+  "cases": [
+    {"id": "fence", "kind": "contract", "model": "specs/Lease.tla", "init": "Init", "next": "Next",
+     "constants": {"Workers": "{\"a\", \"b\"}", "MaxToken": 3}, "invariants": ["Fenced", "Bounded"]},
+    {"id": "single", "kind": "probe", "model": "specs/Lease.tla", "init": "Init", "next": "Next",
+     "constants": {"Workers": "{\"a\", \"b\"}", "MaxToken": 3}, "invariants": ["SingleBeliever"],
+     "question": "同一时刻是否只有一个执行者自认为持有租约？"}
+  ],
+  "coverage": [
+    {"id": "R1", "requirement": "存储里的令牌只增不减，旧令牌的迟到写入被拒绝", "properties": ["Fenced"],
+     "code": ["src/lease.py"], "tests": ["tests/test_lease.py"]},
+    {"id": "R2", "requirement": "存储里的令牌不超过已发放的最大令牌", "properties": ["Bounded"],
+     "code": ["src/lease.py"], "tests": ["tests/test_lease.py"]}
+  ]
+}

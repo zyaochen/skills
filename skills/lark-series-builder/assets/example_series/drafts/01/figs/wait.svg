@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+<rect x="0" y="0" width="1200" height="400" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">同步拷贝时，每个 batch 前 GPU 都空等一段</text>
+<text x="40" y="92" font-size="14" fill="#646A73">横轴是时间，单位为示意刻度；橙色是拷贝，蓝色是计算</text>
+<text x="178" y="172" font-size="14" fill="#1F2329" text-anchor="end">拷贝 stream</text>
+<rect x="190" y="150" width="970" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="190" y="153" width="146" height="28" rx="4" fill="#FFF1E0" stroke="#FFBA6B" stroke-width="1"/>
+<text x="263" y="172" font-size="12" fill="#D46B08" text-anchor="middle">H2D</text>
+<rect x="675" y="153" width="146" height="28" rx="4" fill="#FFF1E0" stroke="#FFBA6B" stroke-width="1"/>
+<text x="748" y="172" font-size="12" fill="#D46B08" text-anchor="middle">H2D</text>
+<text x="178" y="220" font-size="14" fill="#1F2329" text-anchor="end">计算 stream</text>
+<rect x="190" y="198" width="970" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="336" y="201" width="340" height="28" rx="4" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="505" y="220" font-size="12" fill="#245BDB" text-anchor="middle">计算</text>
+<rect x="820" y="201" width="340" height="28" rx="4" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="990" y="220" font-size="12" fill="#245BDB" text-anchor="middle">计算</text>
+<line x1="190" y1="146" x2="190" y2="236" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="190" y="254" font-size="12" fill="#646A73" text-anchor="middle">0</text>
+<line x1="432" y1="146" x2="432" y2="236" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="432" y="254" font-size="12" fill="#646A73" text-anchor="middle">50</text>
+<line x1="675" y1="146" x2="675" y2="236" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="675" y="254" font-size="12" fill="#646A73" text-anchor="middle">100</text>
+<line x1="918" y1="146" x2="918" y2="236" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="918" y="254" font-size="12" fill="#646A73" text-anchor="middle">150</text>
+<line x1="1160" y1="146" x2="1160" y2="236" stroke="#DEE0E3" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="1160" y="254" font-size="12" fill="#646A73" text-anchor="middle">200</text>
+<rect x="40" y="286" width="1120" height="49" rx="12" fill="#FFF1E0" stroke="#FFBA6B" stroke-width="1"/>
+<text x="56" y="315" font-size="15" fill="#1F2329">拷贝和计算串行：两段 H2D 都暴露在关键路径上。</text>
+<text x="40" y="376" font-size="12" fill="#646A73">来源：本示例整理，示意图</text>
+</svg>

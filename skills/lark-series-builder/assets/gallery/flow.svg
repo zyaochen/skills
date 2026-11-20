@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" width="1200" height="470">
+<rect x="0" y="0" width="1200" height="470" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">优化按五步走：每一步都留下可检查的产出</text>
+<text x="40" y="92" font-size="14" fill="#646A73">编号是执行顺序；第 5 步复测的结论回到第 1 步，开始下一轮</text>
+<rect x="40" y="150" width="189" height="104" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<circle cx="69" cy="175" r="13" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1.5"/>
+<text x="69" y="180" font-size="13" fill="#245BDB" font-weight="bold" text-anchor="middle">1</text>
+<text x="88" y="181" font-size="18" fill="#1F2329" font-weight="bold">定天花板</text>
+<text x="56" y="211" font-size="14" fill="#646A73">用规格和账本算出理论</text>
+<text x="56" y="234" font-size="14" fill="#646A73">时间</text>
+<polyline points="235,202 267,202" fill="none" stroke="#8F959E" stroke-width="2"/>
+<polygon points="257,196 267,202 257,208" fill="#8F959E"/>
+<rect x="273" y="150" width="189" height="104" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<circle cx="302" cy="175" r="13" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1.5"/>
+<text x="302" y="180" font-size="13" fill="#245BDB" font-weight="bold" text-anchor="middle">2</text>
+<text x="321" y="181" font-size="18" fill="#1F2329" font-weight="bold">测实际</text>
+<text x="289" y="211" font-size="14" fill="#646A73">给出命令和指标名</text>
+<polyline points="468,202 500,202" fill="none" stroke="#8F959E" stroke-width="2"/>
+<polygon points="490,196 500,202 490,208" fill="#8F959E"/>
+<rect x="506" y="150" width="189" height="104" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<circle cx="535" cy="175" r="13" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1.5"/>
+<text x="535" y="180" font-size="13" fill="#245BDB" font-weight="bold" text-anchor="middle">3</text>
+<text x="554" y="181" font-size="18" fill="#1F2329" font-weight="bold">定位等待</text>
+<text x="522" y="211" font-size="14" fill="#646A73">差距落在时间账的哪一项</text>
+<polyline points="700,202 732,202" fill="none" stroke="#8F959E" stroke-width="2"/>
+<polygon points="722,196 732,202 722,208" fill="#8F959E"/>
+<rect x="738" y="150" width="189" height="104" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<circle cx="767" cy="175" r="13" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1.5"/>
+<text x="767" y="180" font-size="13" fill="#245BDB" font-weight="bold" text-anchor="middle">4</text>
+<text x="786" y="181" font-size="18" fill="#1F2329" font-weight="bold">消除或隐藏</text>
+<text x="754" y="211" font-size="14" fill="#646A73">手段加前后对比数字</text>
+<polyline points="933,202 965,202" fill="none" stroke="#8F959E" stroke-width="2"/>
+<polygon points="955,196 965,202 955,208" fill="#8F959E"/>
+<rect x="971" y="150" width="189" height="104" rx="12" fill="#E4FAE1" stroke="#8EE085" stroke-width="1"/>
+<circle cx="1000" cy="175" r="13" fill="#E4FAE1" stroke="#8EE085" stroke-width="1.5"/>
+<text x="1000" y="180" font-size="13" fill="#2EA121" font-weight="bold" text-anchor="middle">5</text>
+<text x="1019" y="181" font-size="18" fill="#1F2329" font-weight="bold">复测</text>
+<text x="987" y="211" font-size="14" fill="#646A73">瓶颈转去了哪里</text>
+<polyline points="1066,258 1066,294 134,294 134,262" fill="none" stroke="#8F959E" stroke-width="2"/>
+<polygon points="128,272 134,262 140,272" fill="#8F959E"/>
+<text x="600" y="288" font-size="13" fill="#646A73" text-anchor="middle">下一轮从新的瓶颈开始</text>
+<rect x="40" y="330" width="357" height="82" rx="12" fill="#FFFFFF" stroke="#DEE0E3" stroke-width="1"/>
+<text x="56" y="362" font-size="18" fill="#1F2329" font-weight="bold">产出 1：一张时间账</text>
+<text x="56" y="392" font-size="14" fill="#646A73">计算、等访存、等主机、等通信、空转各多少</text>
+<rect x="421" y="330" width="357" height="82" rx="12" fill="#FFFFFF" stroke="#DEE0E3" stroke-width="1"/>
+<text x="437" y="362" font-size="18" fill="#1F2329" font-weight="bold">产出 2：一条证据</text>
+<text x="437" y="392" font-size="14" fill="#646A73">stall reason、时间线空隙或 busbw，能截图</text>
+<rect x="803" y="330" width="357" height="82" rx="12" fill="#FFFFFF" stroke="#DEE0E3" stroke-width="1"/>
+<text x="819" y="362" font-size="18" fill="#1F2329" font-weight="bold">产出 3：前后两组数字</text>
+<text x="819" y="392" font-size="14" fill="#646A73">同一命令、同一负载，复测可复现</text>
+<text x="40" y="446" font-size="12" fill="#646A73">来源：本 skill 示例，方法闭环的通用画法</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="1200" height="480">
+<rect x="0" y="0" width="1200" height="480" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">选并行方案先看哪项等待最大，再挑消掉它代价最小的手段</text>
+<text x="40" y="92" font-size="14" fill="#646A73">每行一种手段；绿色是本例的推荐选择</text>
+<rect x="40" y="150" width="1120" height="42" rx="0" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="52" y="176" font-size="14" fill="#1F2329" font-weight="bold">手段</text>
+<text x="262" y="176" font-size="14" fill="#1F2329" font-weight="bold">消掉或藏起的等待</text>
+<text x="562" y="176" font-size="14" fill="#1F2329" font-weight="bold">代价</text>
+<text x="862" y="176" font-size="14" fill="#1F2329" font-weight="bold">什么时候选</text>
+<rect x="40" y="192" width="1120" height="38" rx="0" fill="#FFFFFF" stroke="#DEE0E3" stroke-width="1"/>
+<text x="52" y="216" font-size="14" fill="#1F2329" font-weight="bold">数据并行 + 分桶 overlap</text>
+<text x="262" y="216" font-size="14" fill="#1F2329">梯度 all-reduce 的暴露部分</text>
+<text x="562" y="216" font-size="14" fill="#1F2329">每卡一份完整模型状态</text>
+<text x="862" y="216" font-size="14" fill="#1F2329">模型放得下一张卡时</text>
+<rect x="40" y="230" width="1120" height="38" rx="0" fill="#F0FBEF" stroke="#DEE0E3" stroke-width="1"/>
+<text x="52" y="254" font-size="14" fill="#1F2329" font-weight="bold">ZeRO-1 / ZeRO-2</text>
+<text x="262" y="254" font-size="14" fill="#1F2329">优化器状态和梯度的显存</text>
+<text x="562" y="254" font-size="14" fill="#1F2329">多一次 reduce-scatter 与 all-gather</text>
+<text x="862" y="254" font-size="14" fill="#1F2329">显存不够但不想动模型切分</text>
+<rect x="40" y="268" width="1120" height="38" rx="0" fill="#FFFFFF" stroke="#DEE0E3" stroke-width="1"/>
+<text x="52" y="292" font-size="14" fill="#1F2329" font-weight="bold">张量并行</text>
+<text x="262" y="292" font-size="14" fill="#1F2329">单卡放不下一层的问题</text>
+<text x="562" y="292" font-size="14" fill="#1F2329">每层 4 次 all-reduce，必须走 NVLink</text>
+<text x="862" y="292" font-size="14" fill="#1F2329">层很宽、机内 NVLink 充足</text>
+<rect x="40" y="306" width="1120" height="38" rx="0" fill="#F5F6F7" stroke="#DEE0E3" stroke-width="1"/>
+<text x="52" y="330" font-size="14" fill="#1F2329" font-weight="bold">流水线并行</text>
+<text x="262" y="330" font-size="14" fill="#1F2329">跨机带宽不足</text>
+<text x="562" y="330" font-size="14" fill="#1F2329">气泡 (p-1)/m，需要足够多的微批</text>
+<text x="862" y="330" font-size="14" fill="#1F2329">层数多、跨机带宽紧张</text>
+<rect x="40" y="372" width="1120" height="49" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="56" y="401" font-size="15" fill="#1F2329">先用时间账确认最大的等待是显存还是通信，再选手段；不要一上来就叠满三种并行。</text>
+<text x="40" y="456" font-size="12" fill="#646A73">来源：本 skill 示例，选型矩阵的画法</text>
+</svg>

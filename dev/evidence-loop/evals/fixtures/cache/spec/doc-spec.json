@@ -1,0 +1,24 @@
+{
+ "headings": [
+  "背景",
+  "命中率",
+  "延迟",
+  "结论"
+ ],
+ "min_chars": 120,
+ "claims": "docs/claims.jsonl",
+ "questions": [
+  {
+   "id": "hit",
+   "text": "新缓存层的命中率是多少",
+   "min_sources": 1,
+   "heading": "命中率"
+  },
+  {
+   "id": "latency",
+   "text": "p99 延迟变化多少",
+   "min_sources": 1,
+   "heading": "延迟"
+  }
+ ]
+}

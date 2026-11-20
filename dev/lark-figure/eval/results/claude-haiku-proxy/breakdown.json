@@ -1,0 +1,52 @@
+{
+  "type": "tree",
+  "title": "GPU 实例占账单 45%，成为降本重点",
+  "subtitle": "10 月云账单 420 万的成本分布；红色是下季度优化目标",
+  "source": "来源：FinOps 月报 2026-10",
+  "root": {
+    "label": "10 月账单",
+    "sub": "420 万",
+    "children": [
+      {
+        "label": "计算",
+        "sub": "250 万",
+        "children": [
+          {
+            "label": "GPU 实例",
+            "sub": "190 万（45%）",
+            "tone": "risk",
+            "emph": true
+          },
+          {
+            "label": "CPU 实例",
+            "sub": "60 万"
+          }
+        ]
+      },
+      {
+        "label": "存储",
+        "sub": "110 万",
+        "children": [
+          {
+            "label": "对象存储",
+            "sub": "70 万"
+          },
+          {
+            "label": "块存储",
+            "sub": "40 万"
+          }
+        ]
+      },
+      {
+        "label": "网络",
+        "sub": "60 万",
+        "children": [
+          {
+            "label": "跨可用区流量",
+            "sub": "几乎全部"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" width="1200" height="540">
+<rect x="0" y="0" width="1200" height="540" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">离计算单元每远一级，带宽就掉一个量级</text>
+<text x="40" y="92" font-size="14" fill="#646A73">单卡单向带宽，GB/s；同样的字节数，越往下等得越久</text>
+<text x="278" y="184" font-size="14" fill="#1F2329" text-anchor="end">HBM3</text>
+<rect x="290" y="160" width="700" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="290" y="160" width="700" height="34" rx="4" fill="#3370FF" stroke="#3370FF" stroke-width="1"/>
+<text x="998" y="184" font-size="13" fill="#646A73">3350 GB/s  片外显存</text>
+<text x="278" y="240" font-size="14" fill="#1F2329" text-anchor="end">NVLink4（单卡聚合）</text>
+<rect x="290" y="216" width="700" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="290" y="216" width="94" height="34" rx="4" fill="#3370FF" stroke="#3370FF" stroke-width="1"/>
+<text x="392" y="240" font-size="13" fill="#646A73">450 GB/s  机内卡间</text>
+<text x="278" y="296" font-size="14" fill="#1F2329" text-anchor="end">PCIe Gen5 x16</text>
+<rect x="290" y="272" width="700" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="290" y="272" width="13" height="34" rx="4" fill="#FF8800" stroke="#FF8800" stroke-width="1"/>
+<text x="311" y="296" font-size="13" fill="#646A73">63 GB/s  主机与网卡</text>
+<text x="278" y="352" font-size="14" fill="#1F2329" text-anchor="end">400G RDMA 网卡</text>
+<rect x="290" y="328" width="700" height="34" rx="4" fill="#F2F3F5" stroke="#F2F3F5" stroke-width="1"/>
+<rect x="290" y="328" width="10" height="34" rx="4" fill="#FF8800" stroke="#FF8800" stroke-width="1"/>
+<text x="308" y="352" font-size="13" fill="#646A73">50 GB/s  跨机</text>
+<rect x="40" y="398" width="548" height="82" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="56" y="429" font-size="18" fill="#1F2329" font-weight="bold">少搬字节</text>
+<text x="56" y="459" font-size="14" fill="#646A73">融合、复用、压缩，减少每一级上的流量</text>
+<rect x="612" y="398" width="548" height="82" rx="12" fill="#E4FAE1" stroke="#8EE085" stroke-width="1"/>
+<text x="628" y="429" font-size="18" fill="#1F2329" font-weight="bold">把搬运藏起来</text>
+<text x="628" y="459" font-size="14" fill="#646A73">异步、流水、overlap，让等待不在关键路径上</text>
+<text x="40" y="516" font-size="12" fill="#646A73">来源：NVIDIA H100 规格页、PCIe 5.0 规范折算、ConnectX-7 规格页；均为单向口径</text>
+</svg>

@@ -1,0 +1,11 @@
+ROLE: companion code for this doc, directory {CODE_PATH}.
+Read: {ROOT}/spec/MAINLINE.md (sections on the ledger and units), the doc's registry entry (focus/scope), {BACKUP_HINT}an existing sibling code directory as style sample (first 60 lines of one sim_*.py), and shared helpers under the repo's common/ if present.
+Deliver in {CODE_PATH}/ (CPU parts: Python 3.10+ standard library only unless the series says otherwise):
+1. At least 2 sim_*.py with argparse subcommands that model this doc's focus quantitatively: the ceiling, the measured/actual case, where the gap sits, the effect of the fix. Docstring: the formulas and their sources. Defaults must be physically realistic; check them against these reference values:
+{REFVALUES}
+2. test_*.py runnable as python3 test_x.py, >= 6 assertions, >= 3 reproducing published numbers (source in the docstring), plus sanity checks (monotonicity, orders of magnitude).
+3. Environment-specific files (gpu_*.py, *.sh, …) only where the doc needs them: conservative, readable, header states required versions and "not re-run on real hardware in this repo"; shell scripts start with #!/usr/bin/env bash and set -Eeuo pipefail; no hardcoded IPs, hosts or tokens.
+4. README.md (Chinese): one paragraph, file table (文件 / 环境 / 做什么), run commands, expected outputs copied from real runs.
+5. {ROOT}/drafts/{NN}/code_outputs.md: every useful sim command with its real output pasted by a script loop (never hand-typed), plus the test output.
+Completion: py_compile clean on all .py, all tests green, README outputs match code_outputs.md.
+Final message (Chinese, <= 60 words): files, subcommands, test count, any default you were unsure about.

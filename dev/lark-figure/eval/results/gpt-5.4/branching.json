@@ -1,0 +1,121 @@
+{
+  "type": "graph",
+  "title": "对象存储旁路把查询延迟从14分钟降到3分钟",
+  "subtitle": "Kafka 分实时与归档两路；Flink 遇到下游积压 >5 分钟时走对象存储旁路，再回灌 ClickHouse",
+  "callout": {
+    "text": "改造后查询端数据延迟 p99：14 分钟 → 3 分钟",
+    "tone": "good"
+  },
+  "source": "来源：日志平台 2026 年 10 月复盘",
+  "stages": [
+    {
+      "name": "采集",
+      "nodes": [
+        {
+          "id": "agent",
+          "title": "Agent",
+          "sub": "日志采集",
+          "tone": "base"
+        }
+      ]
+    },
+    {
+      "name": "总线",
+      "nodes": [
+        {
+          "id": "kafka",
+          "title": "Kafka",
+          "sub": "汇聚入口",
+          "tone": "base"
+        }
+      ]
+    },
+    {
+      "name": "处理 / 归档",
+      "nodes": [
+        {
+          "id": "flink",
+          "title": "Flink",
+          "sub": "清洗 · 聚合",
+          "tone": "main"
+        },
+        {
+          "id": "oss",
+          "title": "对象存储",
+          "sub": "归档 180 天 · 暂存明细",
+          "tone": "good",
+          "emph": true
+        }
+      ]
+    },
+    {
+      "name": "查询库",
+      "nodes": [
+        {
+          "id": "ck",
+          "title": "ClickHouse",
+          "sub": "查询数据源",
+          "tone": "main"
+        }
+      ]
+    },
+    {
+      "name": "消费",
+      "nodes": [
+        {
+          "id": "query",
+          "title": "查询端",
+          "sub": "p99 3 分钟",
+          "tone": "good",
+          "emph": true
+        },
+        {
+          "id": "alert",
+          "title": "告警服务",
+          "sub": "只读 ClickHouse",
+          "tone": "base"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "agent",
+      "to": "kafka"
+    },
+    {
+      "from": "kafka",
+      "to": "flink"
+    },
+    {
+      "from": "kafka",
+      "to": "oss",
+      "label": "归档"
+    },
+    {
+      "from": "flink",
+      "to": "ck",
+      "label": "实时"
+    },
+    {
+      "from": "flink",
+      "to": "oss",
+      "label": "积压>5分",
+      "dashed": true
+    },
+    {
+      "from": "oss",
+      "to": "ck",
+      "label": "回灌",
+      "dashed": true
+    },
+    {
+      "from": "ck",
+      "to": "query"
+    },
+    {
+      "from": "ck",
+      "to": "alert"
+    }
+  ]
+}

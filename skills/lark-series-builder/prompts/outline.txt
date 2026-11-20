@@ -1,0 +1,10 @@
+ROLE: outline for this doc. Output drafts/{NN}/outline.md (save section by section).
+Read: spec/QUICK.md, spec/MAINLINE.md, spec/cards/{NN}.md, registry entries of {NN} and prev/next, drafts/{NN}/facts.md, refs.json, code_outputs.md (if present), {BACKUP_HINT}{SKILL}/references/write_brief.md sections 1-2, {SKILL}/references/chart_brief.md sections 1 and 3.
+Write:
+1. s00: the 🎯 paragraphs (problem / usage / code with the real files), the position sentence (prev/next, this doc's focus), {GUIDE} 导读 conclusions each with ref keys and numbers, 📎 分工 pointers to neighbour docs.
+2. {CHAPTERS} chapters as s01..sKK: h1 title (a judgment; chapter 1 contains "{FIRST}", the last contains "{LAST}"), {H2} h2 each with bullet points, the ref keys and numbers to use, code_outputs commands to quote. Mark the chapter carrying the full method case ({TERMS}). Place 💡 pitfalls ({PITFALLS}). Content of neighbour scopes becomes one-sentence pointers.
+3. Figure list, {FIG_LO}-{FIG_HI} figures, at least 3 different types: for each: name, chapter, judgment title, subtitle, type (ledger/flow/bars/lanes/compare/matrix/ladder/arch), elements and every number with source, 来源 line. `overview` (s00) and one figure in chapter 1 are mandatory.
+4. Writer grouping: 4-5 writers, 2-3 segments each, similar size; each writer owns the figures of its segments.
+5. Number table: every key number, its unit and basis, and its source (ref key or sim command) so all writers use the same values; formulas for every derived metric.
+Completion: every chapter has >= {CITE_MIN} ref keys planned and enough material for {CH_LO}+ CJK characters.
+Final message (Chinese, <= 60 words): chapter titles, figure names, writer groups.

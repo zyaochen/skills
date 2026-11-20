@@ -1,0 +1,5 @@
+ROLE: thicken thin segments. Segments: {SEGS}. {EXTRA}
+Read only: spec/QUICK.md, {SKILL}/references/write_brief.md section 2, {SKILL}/references/style_pairs.md, your segment files, drafts/{NN}/refs.json, code_outputs.md, facts.md (grep), and the outline section for your segments.
+Run python3 {S}/stats.py {NN}. For each listed segment, find which element of the thickness table is missing (mechanism, numbers with basis, runnable commands/config, boundary conditions, pitfall, figure or table) and add exactly that, sourced, until the segment reaches {CH_LO}-{CH_HI} CJK characters and >= {CITE_MIN} distinct keys. No warm-up sentences, no repetition of other chapters, no "总之/综上" paragraphs. Add a table or code block where the chapter has none.
+Save after each segment. Then normalize, autofix, build --quiet (ERROR 0 for your segments) and stats (no flag on your segments).
+Final message (Chinese, <= 60 words): per segment CJK before -> after, what was added.

@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "title": "现状"
+  },
+  "nodes": [
+    {
+      "id": "store",
+      "label": "订单仓储",
+      "sublabel": "只读",
+      "kind": "store"
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,106 @@
+{
+ "type": "graph",
+ "title": "加积压旁路后，查询 p99 从 14 分钟降到 3 分钟",
+ "subtitle": "Kafka 后分实时、归档两路；虚线旁路：积压超 5 分钟明细暂存对象存储，消除后回灌",
+ "source": "来源：日志平台 2026 年 10 月复盘",
+ "stages": [
+  {
+   "name": "采集",
+   "nodes": [
+    {
+     "id": "agent",
+     "title": "Agent",
+     "sub": "日志采集端",
+     "tone": "base"
+    }
+   ]
+  },
+  {
+   "name": "缓冲",
+   "nodes": [
+    {
+     "id": "kafka",
+     "title": "Kafka",
+     "sub": "实时 / 归档 分流",
+     "tone": "base"
+    }
+   ]
+  },
+  {
+   "name": "加工",
+   "nodes": [
+    {
+     "id": "flink",
+     "title": "Flink",
+     "sub": "清洗 · 聚合 · 判积压",
+     "emph": true
+    }
+   ]
+  },
+  {
+   "name": "存储",
+   "nodes": [
+    {
+     "id": "ck",
+     "title": "ClickHouse",
+     "sub": "查询 p99 3 分钟",
+     "tone": "good",
+     "emph": true
+    },
+    {
+     "id": "oss",
+     "title": "对象存储",
+     "sub": "归档保留 180 天",
+     "tone": "base"
+    }
+   ]
+  },
+  {
+   "name": "消费",
+   "nodes": [
+    {
+     "id": "alert",
+     "title": "告警服务",
+     "sub": "只读 ClickHouse",
+     "tone": "base"
+    }
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "agent",
+   "to": "kafka"
+  },
+  {
+   "from": "kafka",
+   "to": "flink",
+   "label": "实时"
+  },
+  {
+   "from": "kafka",
+   "to": "oss",
+   "label": "归档"
+  },
+  {
+   "from": "flink",
+   "to": "ck"
+  },
+  {
+   "from": "flink",
+   "to": "oss",
+   "label": "旁路",
+   "dashed": true
+  },
+  {
+   "from": "oss",
+   "to": "flink",
+   "label": "回灌",
+   "dashed": true
+  },
+  {
+   "from": "ck",
+   "to": "alert"
+  }
+ ]
+}

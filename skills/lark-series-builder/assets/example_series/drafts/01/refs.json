@@ -1,0 +1,4 @@
+{
+ "cuda_pinned": {"cite": "NVIDIA. CUDA C++ Best Practices Guide: Pinned Memory. NVIDIA Docs (2026)", "url": "https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html#pinned-memory"},
+ "pytorch_pin": {"cite": "PyTorch. A guide on good usage of non_blocking and pin_memory(). PyTorch Tutorials (2025)", "url": "https://docs.pytorch.org/tutorials/intermediate/pinmem_nonblock.html"}
+}

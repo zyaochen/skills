@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+<rect x="0" y="0" width="1200" height="400" rx="16" fill="#FAFBFD" stroke="#DEE0E3"/>
+<text x="40" y="58" font-size="28" fill="#1F2329" font-weight="bold">锁页内存省掉一次复制，异步拷贝才真正和计算重叠</text>
+<text x="40" y="92" font-size="14" fill="#646A73">左边是可分页内存的路径，右边是锁页内存的路径</text>
+<rect x="40" y="150" width="512" height="104" rx="12" fill="#FFF1E0" stroke="#FFBA6B" stroke-width="1"/>
+<text x="56" y="181" font-size="18" fill="#1F2329" font-weight="bold">可分页内存</text>
+<text x="56" y="211" font-size="14" fill="#646A73">驱动先复制到临时锁页缓冲</text>
+<text x="56" y="234" font-size="14" fill="#646A73">再由 DMA 拷到显存，两段串行</text>
+<rect x="648" y="150" width="512" height="104" rx="12" fill="#E4FAE1" stroke="#8EE085" stroke-width="1"/>
+<text x="664" y="181" font-size="18" fill="#1F2329" font-weight="bold">锁页内存</text>
+<text x="664" y="211" font-size="14" fill="#646A73">DMA 直接读主机内存</text>
+<text x="664" y="234" font-size="14" fill="#646A73">可以和计算在不同 stream 上重叠</text>
+<polyline points="564,202 636,202" fill="none" stroke="#8F959E" stroke-width="2"/>
+<polygon points="626,196 636,202 626,208" fill="#8F959E"/>
+<text x="600" y="194" font-size="12" fill="#646A73" text-anchor="middle">pin_memory</text>
+<rect x="40" y="286" width="1120" height="49" rx="12" fill="#E1EAFF" stroke="#82A7FC" stroke-width="1"/>
+<text x="56" y="315" font-size="15" fill="#1F2329">GPU 等主机拷贝的时间从关键路径上移走。</text>
+<text x="40" y="376" font-size="12" fill="#646A73">来源：NVIDIA CUDA C++ Best Practices Guide；PyTorch pin_memory 教程</text>
+</svg>

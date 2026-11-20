@@ -1,0 +1,40 @@
+{
+  "type": "bars",
+  "title": "推荐和搜索冷启动超 30 秒，推荐最严重",
+  "subtitle": "条长是各服务从冷启动到可服务时间；虚线为发布规范上限，推荐启动时需加载 6 GB 模型文件",
+  "source": "来源：2026 年 11 月发布演练记录",
+  "unit": " 秒",
+  "sort": "desc",
+  "rows": [
+    {
+      "label": "推荐服务",
+      "value": 48,
+      "tone": "risk",
+      "note": "加载 6 GB 模型"
+    },
+    {
+      "label": "搜索服务",
+      "value": 31,
+      "tone": "risk"
+    },
+    {
+      "label": "订单服务",
+      "value": 12,
+      "tone": "base"
+    },
+    {
+      "label": "用户服务",
+      "value": 9,
+      "tone": "base"
+    },
+    {
+      "label": "网关",
+      "value": 4,
+      "tone": "base"
+    }
+  ],
+  "ref": {
+    "value": 30,
+    "label": "规范 30 秒"
+  }
+}
