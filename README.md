@@ -21,7 +21,7 @@
 装到 Claude Code（用户级）：
 
 ```bash
-git clone https://github.com/chenziyaos/skills.git ~/src/skills
+git clone https://github.com/zyaochen/skills.git ~/src/skills
 ln -s ~/src/skills/skills/evidence-loop ~/.claude/skills/evidence-loop   # 按需逐个软链
 ```
 
