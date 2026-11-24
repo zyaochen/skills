@@ -1,8 +1,8 @@
 # skills
 
-个人 agent skill 集合：9 个 skill，与公司业务无关，遵循 `SKILL.md` 规范（Claude Code、Codex、Cursor 等都能识别）。
+我自己日常在用的 agent skill 集合，共 9 个。遵循 `SKILL.md` 规范，Claude Code 和其他支持该规范的 agent 都能用。
 
-不是工具、不是 MCP；每个 skill 是一段流程规约 + 若干脚本，告诉 agent 在什么情况下按什么步骤干活、写完按什么标准验收。
+skill 不是工具也不是 MCP：每个目录就是一份流程规约加若干脚本，规定 agent 在什么场景触发、按什么步骤做、做到什么标准算完成。
 
 ## 装
 
