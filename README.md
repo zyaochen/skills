@@ -1,71 +1,103 @@
 # skills
 
-这里放的是我自己日常在用、和公司业务无关的 Agent skill，在 Claude Code 和其他支持 `SKILL.md` 的 Agent 里都能用。每个 skill 一个目录，入口是 `skills/<name>/SKILL.md`。测试和评测用例放在 `dev/<name>/`，不属于技能本体，安装时不用复制。
+个人 agent skill 集合：9 个 skill，与公司业务无关，遵循 `SKILL.md` 规范（Claude Code、Codex、Cursor 等都能识别）。
 
-## 能做什么
+不是工具、不是 MCP；每个 skill 是一段流程规约 + 若干脚本，告诉 agent 在什么情况下按什么步骤干活、写完按什么标准验收。
 
-| skill | 用途 | 来源与许可 |
+## 装
+
+```bash
+git clone https://github.com/zyaochen/skills.git
+cd skills
+ln -s "$PWD/skills/lark-figure" ~/.claude/skills/lark-figure   # 按需逐个软链，注意软链的是 skills/<name> 这层
+```
+
+```text
+$ ls ~/.claude/skills/
+lark-figure
+```
+
+软链指到目录本身；`git pull` 后无需任何重启。不要软链 `skills/` 整层，不要把多个 skill 平铺在一个父目录下。
+
+## 9 个 skill 一览
+
+| skill | 一句话用途 | 上游 / 许可 |
 |---|---|---|
-| [evidence-loop](skills/evidence-loop/SKILL.md) | 带机械裁判的自主工程循环：先澄清约定，在独立 worktree 里逐次裁决，结果要么保留要么回滚，最后验证并交人批准。覆盖缺陷修复、按蓝图开发、性能优化、带出处的调研、TLA+/TLC 形式化验证 | 自写，MIT |
-| [lark-figure](skills/lark-figure/SKILL.md) | 飞书画板配图：模型只写内容 spec（一句判断、要素、数字、来源），排版、配色、走线由脚本生成，过 lint 和画板自检后写入画板。14 种图型加拼图 | 自写，MIT |
-| [lark-series-builder](skills/lark-series-builder/SKILL.md) | 批量写完、重写或提质一整套飞书系列文档：主编定规范、派活、验收，正文和图交给子 Agent，靠数字门槛、自排版 SVG 构件、图型样板和独立评审保证水准 | 自写，MIT |
-| [monument-valley](skills/monument-valley/SKILL.md) | 把一个主题的公开材料做成纪念碑谷式的可探索档案：关卡叙事、统一等距插画、可续建的飞书文档 | 自写，MIT |
-| [thought-distillation](skills/thought-distillation/SKILL.md) | 把一个人或团队的全部写作精读后串成一条主线，产出图文并茂的飞书文档 | 自写，MIT |
-| [skill-guide-writer](skills/skill-guide-writer/SKILL.md) | 以本地证据为先，给已有的 skill、工具或插件写 Quick Start、完整指南和升级说明 | 自写，MIT |
-| [life-decision-guide](skills/life-decision-guide/SKILL.md) | 基于《高性价比人生指南》离线快照回答具体生活选择，先查原文再答，并注明出处 | 改编自 [eternity4719/HowToLiveBetter](https://github.com/eternity4719/HowToLiveBetter)，Unlicense；快照版本见 `references/provenance.json` |
-| [grilling](skills/grilling/SKILL.md) | 对方案、决策或想法逐轮追问，直到没有遗留的隐含假设 | 外部公开 skill，2026-08-14 装到本机，上游没有记录，不在本仓库的 MIT 范围内 |
-| [grill-me](skills/grill-me/SKILL.md) | `grilling` 的手动入口，只能由用户输入 `/grill-me` 触发 | 同 `grilling` |
+| [evidence-loop](skills/evidence-loop/SKILL.md) | 机械裁判驱动的自主工程循环：修 bug、按蓝图开发、压指标、调研，结果要么保留要么回滚 | 自写 · MIT |
+| [lark-figure](skills/lark-figure/SKILL.md) | 飞书画板配图：模型只写内容 spec，排版/配色/走线由 14 种图型的脚本生成，过 lint 后写入画板 | 自写 · MIT |
+| [lark-series-builder](skills/lark-series-builder/SKILL.md) | 批量写完或提质一整套飞书系列文档：主编定规范、派活、验收，正文交给子 agent | 自写 · MIT |
+| [monument-valley](skills/monument-valley/SKILL.md) | 把任意主题的公开材料做成纪念碑谷式可探索档案（关卡叙事 + 等距插画） | 自写 · MIT |
+| [thought-distillation](skills/thought-distillation/SKILL.md) | 把一个人或团队的全部写作精读后串成一条主线，产出图文并茂的飞书文档 | 自写 · MIT |
+| [skill-guide-writer](skills/skill-guide-writer/SKILL.md) | 以本地证据为先，给已有 skill / 工具 / 插件写 Quick Start 和升级说明 | 自写 · MIT |
+| [life-decision-guide](skills/life-decision-guide/SKILL.md) | 基于《高性价比人生指南》离线快照回答具体生活选择，注明出处 | [eternity4719/HowToLiveBetter](https://github.com/eternity4719/HowToLiveBetter) @ `24e3d67` · Unlicense |
+| [grilling](skills/grilling/SKILL.md) | 按 design tree 的 frontier 逐轮探问，把方案 / 决策 / 想法追问到没有隐含假设 | [mattpocock/skills](https://github.com/mattpocock/skills) 早期快照 · MIT |
+| [grill-me](skills/grill-me/SKILL.md) | grilling 的用户手动入口（`/grill-me`），不让模型自动触发 | 同上 · MIT |
 
-## 怎么用
-
-装到 Claude Code（用户级）：
-
-```bash
-git clone https://github.com/zyaochen/skills.git ~/src/skills
-ln -s ~/src/skills/skills/evidence-loop ~/.claude/skills/evidence-loop   # 按需逐个软链
-```
-
-软链的好处是 `git pull` 后立即生效。只想用某一版就直接复制目录。项目级安装把链接放到项目的 `.claude/skills/` 下。
-
-跑测试（Python 3.8+）：
-
-```bash
-python3 -m unittest discover -s dev/evidence-loop/tests -p 'test_*.py'
-python3 -m unittest discover -s dev/lark-figure -p 'test_*.py'          # monument-valley、thought-distillation、life-decision-guide 同理
-bash skills/lark-series-builder/scripts/selftest.sh                      # 输出 SELFTEST OK
-```
+镜像快照与上游最新版只有格式差异（破折号 / 空行），另有 2 处小省略；同步发生时以 commit log 为准。
 
 ## 依赖
 
+按「只要 pip / npm / 装了就能用」到「要特定账号」排序：
+
 | skill | 需要 |
 |---|---|
-| lark-figure、lark-series-builder、monument-valley、thought-distillation | 飞书官方 `lark-cli` 已登录（`--as user`）；lark-figure 本地预览还要 Node，`npx @larksuite/whiteboard-cli` |
-| lark-series-builder 的本地预览 | macOS Quick Look（`qlmanage`） |
-| evidence-loop 的形式化模式 | Java 11+，首次运行下载钉死版本的 `tla2tools.jar` |
-| monument-valley 的图片检查 | Pillow，macOS 上没装时改用 `sips` |
-| 其余 | Python 3.8+ 标准库 |
+| skill-guide-writer、life-decision-guide、grilling、grill-me | Python 3.8+ 标准库，无外部依赖 |
+| evidence-loop | Python 3.8+、git 2.20+；形式化模式另需 Java 11+，首次运行 `evloop_tlc.py fetch --jre` 下载钉死版本的 `tla2tools.jar` |
+| lark-figure、lark-series-builder、monument-valley、thought-distillation | 已登录的 `lark-cli`（`lark-cli auth login`，user 身份）；lark-figure 本地预览还要 Node（跑 `npx @larksuite/whiteboard-cli`） |
+| monument-valley | Pillow（可选，图片检查；macOS 上回退到 `sips`） |
+| lark-series-builder 本地预览 | macOS Quick Look（`qlmanage`） |
 
-## 文件约定
+## 测试
 
-| 路径 | 内容 |
-|---|---|
-| `skills/<name>/SKILL.md` | 技能入口：触发条件、流程、硬约束 |
-| `skills/<name>/references/` | 按需加载的细则 |
-| `skills/<name>/scripts/` | 技能调用的脚本 |
-| `dev/<name>/` | 单元测试、评测用例和夹具，测试按相对路径找 `skills/<name>` |
+每个 skill 的测试放在 `dev/<name>/`（不属于技能本体，安装时不用复制）。在仓库根目录跑：
+
+```bash
+python3 -m unittest discover -s dev/evidence-loop/tests -p 'test_*.py'
+python3 -m unittest discover -s dev/lark-figure          -p 'test_*.py'
+python3 -m unittest discover -s dev/life-decision-guide  -p 'test_*.py'
+python3 -m unittest discover -s dev/monument-valley      -p 'test_*.py'
+python3 -m unittest discover -s dev/thought-distillation -p 'test_*.py'
+bash skills/lark-series-builder/scripts/selftest.sh      # 期望输出 SELFTEST OK
+```
+
+在仓库根目录跑因为测试按相对路径找 `skills/<name>`。
 
 ## 限制
 
-- 四个飞书相关的 skill 会写飞书文档或画板。`lark-figure put` 不加 `--yes` 时只做 dry-run；`lark-series-builder` 只在用户授权后整篇覆盖发布；`thought-distillation` 的发布步骤用 `overwrite`，会丢掉目标文档原有的评论和画板，只能对它自己新建的文档用。
-- `dev/lark-figure/eval/results/` 是 2026 年几次模型评测的原始输出，只说明当时的表现，不作为效果承诺。
-- `grilling` 和 `grill-me` 的上游没有记录。公开前要先找到上游并核对许可，找不到就从仓库移除。
+- 4 个写飞书的 skill（lark-figure / lark-series-builder / monument-valley / thought-distillation）都只在与你确认后才写入飞书；lark-figure 的 `put` 默认 dry-run，要加 `--yes` 才真写。
+- evidence-loop 跑长任务时在独立 worktree 工作，完事还要经你批准才能合并回主分支；它不是无脑自治。
+- thought-distillation 的整篇 publish 步骤用 `overwrite`（会丢原评论），只应对自动新建的文档用；已有飞书文档请走 update 路径。
+- `dev/lark-figure/eval/results/` 是 2026 年几次模型评测的原始输出，只说明当时的表现，不构成效果承诺。
+- 不写 skill 做不到的：`grilling` 期间模型只能问，不替你下决定；`evidence-loop` 的裁判不评价代码好坏，只校验约定是否达成。
 
-## 常见问题
+## 排障 & FAQ
 
-- **装了却不触发**：Claude Code 按 `SKILL.md` 里的 `description` 判断何时调用。确认软链指向的是 `skills/<name>` 目录本身，再新开会话。
-- **测试找不到技能**：测试按相对路径找 `skills/<name>`，要在仓库根目录下运行，不要把 `dev/` 单独拷走。
-- **写飞书报权限错误**：先跑 `lark-cli auth status`，确认 user 身份已登录，并且有文档和画板的写权限。
+| 问题 | 处理 |
+|---|---|
+| 装了却不触发 | 检查软链指向的是 `skills/<name>` 目录本身，而不是父目录；再开一个新会话。agent 按 `SKILL.md` 的 `description` 决定何时调用 |
+| 测试 ImportError / 找不到技能 | 必须在仓库根目录跑测试——`dev/<name>/` 靠相对路径引用 `skills/<name>/` |
+| 写飞书报权限错 | `lark-cli auth status` 确认 user 身份已登录且具备文档 / 画板的写权限 |
+
+## 目录结构
+
+```text
+skills/
+  <name>/
+    SKILL.md            # 入口：触发条件、流程、硬约束
+    references/         # 按需加载的细则
+    scripts/            # skill 实际跑的脚本
+dev/
+  <name>/
+    tests/              # 对应 skill 的单元测试 / 评测
+    ...
+LICENSE                 # MIT（自写部分）
+```
 
 ## 许可
 
-自写部分为 MIT，见 [LICENSE](LICENSE)。`life-decision-guide` 沿用上游的 Unlicense；`grilling`、`grill-me` 按上表说明处理。
+自写部分 MIT，见 [LICENSE](LICENSE)。
+
+改编自上游的 skill 沿用上游许可：
+
+- `life-decision-guide` — Unlicense（与上游 eternity4719/HowToLiveBetter 一致）
+- `grilling` / `grill-me` — MIT（与上游 mattpocock/skills 一致）
